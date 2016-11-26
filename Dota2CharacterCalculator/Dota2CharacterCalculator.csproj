@@ -102,6 +102,7 @@
     <Resource Include="Assets\Items\Satanic.png" />
     <Resource Include="Assets\Heroes\Morphling.png" />
     <Resource Include="Assets\Heroes\Invoker.png" />
+    <Resource Include="Assets\Stats\AttackDamage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

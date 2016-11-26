@@ -15,7 +15,7 @@
 
     <Canvas>
         <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="30" Margin="46,22,0,0"
-                 VerticalAlignment="Top" Width="140">
+                 VerticalAlignment="Top" Width="140" IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -25,6 +25,19 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+
+        <!-- Stats -->
+        <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="95" Width="140">
+            <!-- Left panel -->
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding SelectedItem.Damage.Icon, ElementName=Heroes}" Width="40" />
+                    <TextBlock Text="{Binding SelectedItem.Damage.Average, ElementName=Heroes}" Padding="15" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Right panel -->
+        </StackPanel>
 
         <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
               Canvas.Left="655" Canvas.Top="25" x:Name="Inventory">
