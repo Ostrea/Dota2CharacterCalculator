@@ -19,8 +19,8 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Icon}" />
-                        <TextBlock Text="{Binding Name}" />
+                        <Image Source="{Binding Icon}" Width="40" />
+                        <TextBlock Text="{Binding Name}" Padding="5" />
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
