@@ -31,8 +31,8 @@ namespace Dota2CharacterCalculator
             InitializeComponent();
             DataContext = this;
 
-            _items.Add(new Item("Butterfly", new BitmapImage(new Uri("Assets/Items/Butterfly.png", UriKind.Relative))));
-            _items.Add(new Item("Satanic", new BitmapImage(new Uri("Assets/Items/Satanic.png", UriKind.Relative))));
+            _items.Add(new Item("Butterfly", LoadIcon("Butterfly", IconType.Items)));
+            _items.Add(new Item("Satanic", LoadIcon("Satanic", IconType.Items)));
 
             foreach (var child in Inventory.Children)
             {
@@ -44,20 +44,36 @@ namespace Dota2CharacterCalculator
 
             }
 
+            var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
+
             _heroes.Add(new Hero
                 (
                     "Morphling",
-                    new BitmapImage(new Uri("Assets/Heroes/Morphling.png", UriKind.Relative)),
-                    new AttackDamage(9, 18, new BitmapImage(new Uri("Assets/Stats/AttackDamage.png", UriKind.Relative)))
-            ));
+                    LoadIcon("Morphling", IconType.Heroes),
+                    new AttackDamage(9, 18, attackDamageIcon)
+                )
+            );
             _heroes.Add(new Hero
                 (
                     "Invoker",
-                    new BitmapImage(new Uri("Assets/Heroes/Invoker.png", UriKind.Relative)),
-                    new AttackDamage(19, 25, new BitmapImage(new Uri("Assets/Stats/AttackDamage.png", UriKind.Relative)))
-            ));
+                    LoadIcon("Invoker", IconType.Heroes),
+                    new AttackDamage(19, 25, attackDamageIcon)
+                )
+            );
 
             Heroes.ItemsSource = _heroes;
+        }
+
+        private enum IconType
+        {
+            Heroes,
+            Stats,
+            Items,
+        }
+
+        private static BitmapImage LoadIcon(string iconName, IconType iconType)
+        {
+            return new BitmapImage(new Uri($"Assets/{iconType}/{iconName}.png", UriKind.Relative));
         }
     }
 }
