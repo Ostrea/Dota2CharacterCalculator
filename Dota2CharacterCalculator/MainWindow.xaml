@@ -9,7 +9,7 @@
         Title="MainWindow" Height="300" Width="1000" ResizeMode="NoResize">
     <Window.Resources>
         <DataTemplate x:Key="InventoryItemFormat">
-            <Image Source="{Binding Icon}" ToolTip="{Binding Name}" Width="150" Height="70"/>
+            <Image Source="{Binding Icon}" ToolTip="{Binding Name}" Width="150" Height="70" />
         </DataTemplate>
     </Window.Resources>
 
