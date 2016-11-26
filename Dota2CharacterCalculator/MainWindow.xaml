@@ -14,8 +14,8 @@
     </Window.Resources>
 
     <Canvas>
-        <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="23" Margin="46,22,0,0"
-                 VerticalAlignment="Top" Width="123">
+        <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="30" Margin="46,22,0,0"
+                 VerticalAlignment="Top" Width="140">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
