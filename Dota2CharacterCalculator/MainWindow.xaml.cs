@@ -44,8 +44,8 @@ namespace Dota2CharacterCalculator
 
             }
 
-            _heroes.Add(new Hero("Butterfly", new BitmapImage(new Uri("Assets/Items/Butterfly.png", UriKind.Relative))));
-            _heroes.Add(new Hero("Satanic", new BitmapImage(new Uri("Assets/Items/Satanic.png", UriKind.Relative))));
+            _heroes.Add(new Hero("Morphling", new BitmapImage(new Uri("Assets/Heroes/Morphling.png", UriKind.Relative))));
+            _heroes.Add(new Hero("Invoker", new BitmapImage(new Uri("Assets/Heroes/Invoker.png", UriKind.Relative))));
 
             Heroes.ItemsSource = _heroes;
         }
