@@ -4,9 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dota2CharacterCalculator"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="300" Width="1000" ResizeMode="NoResize">
+    <Window.Resources>
+        <DataTemplate x:Key="InventoryItemFormat">
+            <Image Source="{Binding Icon}" Width="150" Height="70"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Canvas>
+        <ComboBox x:Name="HeroName" HorizontalAlignment="Left" Height="23" Margin="46,22,0,0"
+                 VerticalAlignment="Top" Width="123"/>
+
+        <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
+              Canvas.Left="655" Canvas.Top="25" x:Name="Inventory">
+            <Grid.Resources>
+                <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</system:Double>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ComboBox Grid.Row="0" Grid.Column="0" x:Name="FirstItemInInventory"
+                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="SecondItemInInventory"
+                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+            <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ThirdItemInInventory"
+                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+            <ComboBox Grid.Row="1" Grid.Column="0" x:Name="FourthItemInInventory"
+                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FifthItemInInventory"
+                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+            <ComboBox Grid.Row="1" Grid.Column="2" x:Name="SixthItemInInventory"
+                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+        </Grid>
+    </Canvas>
 </Window>

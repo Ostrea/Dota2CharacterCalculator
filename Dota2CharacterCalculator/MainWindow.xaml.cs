@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Dota2CharacterCalculator.Models;
 
 namespace Dota2CharacterCalculator
 {
@@ -20,9 +23,25 @@ namespace Dota2CharacterCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ObservableCollection<Item> _items = new ObservableCollection<Item>();
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
+            _items.Add(new Item("Butterfly", new BitmapImage(new Uri("Assets/Items/Butterfly.png", UriKind.Relative))));
+            _items.Add(new Item("Satanic", new BitmapImage(new Uri("Assets/Items/Satanic.png", UriKind.Relative))));
+
+            foreach (var child in Inventory.Children)
+            {
+                var inventoryItem = child as ComboBox;
+                if (inventoryItem != null)
+                {
+                    inventoryItem.ItemsSource = _items;
+                }
+
+            }
         }
     }
 }
