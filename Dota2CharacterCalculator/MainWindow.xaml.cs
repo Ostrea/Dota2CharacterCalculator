@@ -24,6 +24,7 @@ namespace Dota2CharacterCalculator
     public partial class MainWindow : Window
     {
         private readonly ObservableCollection<Item> _items = new ObservableCollection<Item>();
+        private readonly ObservableCollection<Hero> _heroes = new ObservableCollection<Hero>();
 
         public MainWindow()
         {
@@ -42,6 +43,11 @@ namespace Dota2CharacterCalculator
                 }
 
             }
+
+            _heroes.Add(new Hero("Butterfly", new BitmapImage(new Uri("Assets/Items/Butterfly.png", UriKind.Relative))));
+            _heroes.Add(new Hero("Satanic", new BitmapImage(new Uri("Assets/Items/Satanic.png", UriKind.Relative))));
+
+            Heroes.ItemsSource = _heroes;
         }
     }
 }

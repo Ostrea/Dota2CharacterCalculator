@@ -14,8 +14,17 @@
     </Window.Resources>
 
     <Canvas>
-        <ComboBox x:Name="HeroName" HorizontalAlignment="Left" Height="23" Margin="46,22,0,0"
-                 VerticalAlignment="Top" Width="123"/>
+        <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="23" Margin="46,22,0,0"
+                 VerticalAlignment="Top" Width="123">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Icon}" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
               Canvas.Left="655" Canvas.Top="25" x:Name="Inventory">
