@@ -27,12 +27,13 @@
         </ComboBox>
 
         <!-- Stats -->
-        <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="95" Width="140">
+        <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="95" Width="140"
+                    DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <!-- Left panel -->
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="{Binding SelectedItem.Damage.Icon, ElementName=Heroes}" Width="40" />
-                    <TextBlock Text="{Binding SelectedItem.Damage.Average, ElementName=Heroes}" Padding="15" />
+                    <Image Source="{Binding Damage.Icon}" Width="40" />
+                    <TextBlock Text="{Binding Damage.Average}" Padding="15" />
                 </StackPanel>
             </StackPanel>
 
