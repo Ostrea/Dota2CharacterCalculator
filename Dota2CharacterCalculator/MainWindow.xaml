@@ -34,19 +34,19 @@
             <StackPanel Orientation="Vertical">
 
                 <!-- Damage -->
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" ToolTip="Attack Damage">
                     <Image Source="{Binding Damage.Icon}" Width="40" />
                     <TextBlock Text="{Binding Damage.Average}" Padding="15" />
                 </StackPanel>
 
                 <!-- Armor -->
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" ToolTip="Armor">
                     <Image Source="{Binding Armor.Icon}" Width="40" />
                     <TextBlock Text="{Binding Armor.BaseArmor}" Padding="15" />
                 </StackPanel>
 
                 <!-- Movement Speed -->
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" ToolTip="Movement Speed">
                     <Image Source="{Binding BaseMs.Icon}" Width="40" />
                     <TextBlock Text="{Binding BaseMs.Value}" Padding="15" />
                 </StackPanel>
@@ -55,20 +55,20 @@
             <!-- Right panel -->
             <StackPanel Orientation="Vertical">
 
-                <!-- Damage -->
-                <StackPanel Orientation="Horizontal">
+                <!-- Strength -->
+                <StackPanel Orientation="Horizontal" ToolTip="Strength">
                     <Image Source="{Binding Damage.Icon}" Width="40" />
                     <TextBlock Text="{Binding Damage.Average}" Padding="15" />
                 </StackPanel>
 
-                <!-- Armor -->
-                <StackPanel Orientation="Horizontal">
+                <!-- Agility -->
+                <StackPanel Orientation="Horizontal" ToolTip="Agility">
                     <Image Source="{Binding Armor.Icon}" Width="40" />
                     <TextBlock Text="{Binding Armor.BaseArmor}" Padding="15" />
                 </StackPanel>
 
-                <!-- Movement Speed -->
-                <StackPanel Orientation="Horizontal">
+                <!-- Intelligence -->
+                <StackPanel Orientation="Horizontal" ToolTip="Intelligence">
                     <Image Source="{Binding BaseMs.Icon}" Width="40" />
                     <TextBlock Text="{Binding BaseMs.Value}" Padding="15" />
                 </StackPanel>
