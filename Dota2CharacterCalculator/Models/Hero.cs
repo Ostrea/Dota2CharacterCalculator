@@ -28,6 +28,7 @@ namespace Dota2CharacterCalculator.Models
         public Armor Armor { get; }
         public MovementSpeed BaseMs { get; }
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
+        public AttributeType PrimaryAttribute { get; }
 
         private int _level;
         public int Level
@@ -44,7 +45,7 @@ namespace Dota2CharacterCalculator.Models
 
         public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
                     MovementSpeed baseMs, Tuple<Attribute, Attribute, Attribute> attributes,
-                    int level) : base(icon)
+                    int level, AttributeType primaryAttribute) : base(icon)
         {
             Name = name;
             Damage = damage;
@@ -52,6 +53,7 @@ namespace Dota2CharacterCalculator.Models
             BaseMs = baseMs;
             Attributes = attributes;
             Level = level;
+            PrimaryAttribute = primaryAttribute;
         }
 
         public bool CanIncreaseLevel()
