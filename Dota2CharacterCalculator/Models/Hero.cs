@@ -21,14 +21,18 @@ namespace Dota2CharacterCalculator.Models
         public MovementSpeed BaseMs { get; }
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
 
+        public int Level { get; private set; }
+
         public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
-                    MovementSpeed baseMs, Tuple<Attribute, Attribute, Attribute> attributes) : base(icon)
+                    MovementSpeed baseMs, Tuple<Attribute, Attribute, Attribute> attributes,
+                    int level) : base(icon)
         {
             Name = name;
             Damage = damage;
             Armor = armor;
             BaseMs = baseMs;
             Attributes = attributes;
+            Level = level;
         }
     }
 

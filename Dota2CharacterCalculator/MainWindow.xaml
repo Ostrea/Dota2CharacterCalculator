@@ -44,7 +44,7 @@
 
             <!-- Level -->
             <Image Grid.Row="0" Grid.Column="0" Source="Assets/Stats/Minus.png" />
-            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="25"
+            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Level}"
                        Padding="15" TextAlignment="Center" ToolTip="Level" />
             <Image Grid.Row="0" Grid.Column="3" Source="Assets/Stats/Plus.png" />
 

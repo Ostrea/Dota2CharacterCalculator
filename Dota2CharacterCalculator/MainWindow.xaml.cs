@@ -65,7 +65,8 @@ namespace Dota2CharacterCalculator
                             new Attribute("Strength", 19.0, 2.0, strengthIcon),
                             new Attribute("Agility", 24.0, 3.7, agilityIcon),
                             new Attribute("Intelligence", 17.0, 1.1, intelligenceIcon)
-                        )
+                        ),
+                    1
                 )
             );
             _heroes.Add(new Hero
@@ -80,7 +81,8 @@ namespace Dota2CharacterCalculator
                             new Attribute("Strength", 17.0, 1.7, strengthIcon),
                             new Attribute("Agility", 14.0, 1.9, agilityIcon),
                             new Attribute("Intelligence", 16.0, 4.0, intelligenceIcon)
-                        )
+                        ),
+                    1
                 )
             );
 
