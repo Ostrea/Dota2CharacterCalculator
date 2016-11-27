@@ -27,63 +27,59 @@
         </ComboBox>
 
         <!-- Stats -->
-        <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="70" Width="170"
+        <Grid  Canvas.Left="46" Canvas.Top="70" Width="170"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Level -->
+            <Image Grid.Row="0" Grid.Column="0" Source="Assets/Stats/Minus.png" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="25"
+                       Padding="15" TextAlignment="Center" ToolTip="Level" />
+            <Image Grid.Row="0" Grid.Column="3" Source="Assets/Stats/Plus.png" />
 
             <!-- Left panel -->
-            <StackPanel Orientation="Vertical">
+            <!-- Damage -->
+            <Image Grid.Row="1" Grid.Column="0" Source="{Binding Damage.Icon}" Width="40"
+                   ToolTip="Attack Damage" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Damage.Average}" Padding="15" />
 
-                <!-- Level -->
-                <StackPanel Orientation="Horizontal" ToolTip="Level">
-                    <Image Source="Assets/Stats/Minus.png" Width="60" Height="32"/>
-                    <TextBlock Text="fgfgw" />
-                    <Image Source="Assets/Stats/Plus.png" Width="60" Height="32"/>
-                </StackPanel>
+            <!-- Armor -->
+            <Image Grid.Row="2" Grid.Column="0" Source="{Binding Armor.Icon}" Width="40"
+                   ToolTip="Armor" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.BaseArmor}" Padding="15" />
 
-                <!-- Damage -->
-                <StackPanel Orientation="Horizontal" ToolTip="Attack Damage">
-                    <Image Source="{Binding Damage.Icon}" Width="40" />
-                    <TextBlock Text="{Binding Damage.Average}" Padding="15" />
-                </StackPanel>
-
-                <!-- Armor -->
-                <StackPanel Orientation="Horizontal" ToolTip="Armor">
-                    <Image Source="{Binding Armor.Icon}" Width="40" />
-                    <TextBlock Text="{Binding Armor.BaseArmor}" Padding="15" />
-                </StackPanel>
-
-                <!-- Movement Speed -->
-                <StackPanel Orientation="Horizontal" ToolTip="Movement Speed">
-                    <Image Source="{Binding BaseMs.Icon}" Width="40" />
-                    <TextBlock Text="{Binding BaseMs.Value}" Padding="15" />
-                </StackPanel>
-            </StackPanel>
+            <!-- Movement Speed -->
+            <Image Grid.Row="3" Grid.Column="0" Source="{Binding BaseMs.Icon}" Width="40"
+                   ToolTip="Movement Speed" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BaseMs.Value}" Padding="15" />
 
             <!-- Right panel -->
-            <StackPanel Orientation="Vertical">
+            <!-- Strength -->
+            <Image Grid.Row="1" Grid.Column="2" Source="{Binding Attributes.Item1.Icon}" Width="40"
+                   ToolTip="Strength" />
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Attributes.Item1.Value}" Padding="15" />
 
-                <!-- Strength -->
-                <StackPanel Orientation="Horizontal" DataContext="{Binding Attributes.Item1}"
-                            ToolTip="{Binding Name}">
-                    <Image Source="{Binding Icon}" Width="40" />
-                    <TextBlock Text="{Binding Value}" Padding="15" />
-                </StackPanel>
+            <!-- Agility -->
+            <Image Grid.Row="2" Grid.Column="2" Source="{Binding Attributes.Item2.Icon}" Width="40"
+                   ToolTip="Agility" />
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Attributes.Item2.Value}" Padding="15" />
 
-                <!-- Agility -->
-                <StackPanel Orientation="Horizontal" DataContext="{Binding Attributes.Item2}"
-                            ToolTip="{Binding Name}">
-                    <Image Source="{Binding Icon}" Width="40" />
-                    <TextBlock Text="{Binding Value}" Padding="15" />
-                </StackPanel>
-
-                <!-- Intelligence -->
-                <StackPanel Orientation="Horizontal" DataContext="{Binding Attributes.Item3}"
-                            ToolTip="{Binding Name}">
-                    <Image Source="{Binding Icon}" Width="40" />
-                    <TextBlock Text="{Binding Value}" Padding="15" />
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            <!-- Intelligence -->
+            <Image Grid.Row="3" Grid.Column="2" Source="{Binding Attributes.Item3.Icon}" Width="40"
+                   ToolTip="Intelligence" />
+            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Attributes.Item3.Value}" Padding="15" />
+        </Grid>
 
         <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
               Canvas.Left="655" Canvas.Top="25" x:Name="Inventory">
