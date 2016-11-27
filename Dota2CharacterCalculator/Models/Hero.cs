@@ -111,15 +111,22 @@ namespace Dota2CharacterCalculator.Models
 
     public class Attribute : BaseModel
     {
-        public string Name { get; }
+        public AttributeType Type { get; }
         public double Value { get; }
         public double Growth { get; }
 
-        public Attribute(string name, double value, double growth, BitmapImage icon) : base(icon)
+        public Attribute(AttributeType type, double value, double growth, BitmapImage icon) : base(icon)
         {
-            Name = name;
+            Type = type;
             Value = value;
             Growth = growth;
         }
+    }
+
+    public enum AttributeType
+    {
+        Strength,
+        Agility,
+        Intelligence
     }
 }
