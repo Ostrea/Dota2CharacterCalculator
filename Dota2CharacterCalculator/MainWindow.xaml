@@ -43,10 +43,16 @@
             </Grid.RowDefinitions>
 
             <!-- Level -->
-            <Image Grid.Row="0" Grid.Column="0" Source="Assets/Stats/Minus.png" />
+            <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Image  Source="Assets/Stats/Minus.png" />
+            </Button>
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Level}"
                        Padding="15" TextAlignment="Center" ToolTip="Level" />
-            <Image Grid.Row="0" Grid.Column="3" Source="Assets/Stats/Plus.png" />
+            <Button Grid.Row="0" Grid.Column="3" BorderThickness="0"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Image  Source="Assets/Stats/Plus.png" />
+            </Button>
 
             <!-- Left panel -->
             <!-- Damage -->
