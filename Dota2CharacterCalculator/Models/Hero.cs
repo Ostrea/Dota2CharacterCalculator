@@ -1,15 +1,23 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Media.Imaging;
 
 namespace Dota2CharacterCalculator.Models
 {
-    public abstract class BaseModel
+    public abstract class BaseModel : INotifyPropertyChanged
     {
         public BitmapImage Icon { get; }
 
         protected BaseModel(BitmapImage icon)
         {
             Icon = icon;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyProperyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
@@ -21,7 +29,18 @@ namespace Dota2CharacterCalculator.Models
         public MovementSpeed BaseMs { get; }
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
 
-        public int Level { get; private set; }
+        private int _level;
+        public int Level
+        {
+            get { return _level; }
+            private set
+            {
+                if (_level == value) return;
+
+                _level = value;
+                NotifyProperyChanged(nameof(Level));
+            }
+        }
 
         public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
                     MovementSpeed baseMs, Tuple<Attribute, Attribute, Attribute> attributes,
@@ -33,6 +52,26 @@ namespace Dota2CharacterCalculator.Models
             BaseMs = baseMs;
             Attributes = attributes;
             Level = level;
+        }
+
+        public bool CanIncreaseLevel()
+        {
+            return Level < 25;
+        }
+
+        public void IncreaseLevel()
+        {
+            Level++;
+        }
+
+        public bool CanDecreaseLevel()
+        {
+            return Level > 1;
+        }
+
+        public void DecreaseLevel()
+        {
+            Level--;
         }
     }
 

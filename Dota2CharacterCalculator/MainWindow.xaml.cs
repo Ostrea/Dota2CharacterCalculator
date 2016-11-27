@@ -103,22 +103,26 @@ namespace Dota2CharacterCalculator
 
         private void IncreaseHeroLevelCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            var selectedHero = Heroes.SelectedItem as Hero;
+            e.CanExecute = selectedHero?.CanIncreaseLevel() ?? false;
         }
 
         private void IncreaseHeroLevelCommand_OnExecute(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Hello increase level handler");
+            var selectedHero = Heroes.SelectedItem as Hero;
+            selectedHero?.IncreaseLevel();
         }
 
         private void DecreaseHeroLevelCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            var selectedHero = Heroes.SelectedItem as Hero;
+            e.CanExecute = selectedHero?.CanDecreaseLevel() ?? false;
         }
 
         private void DecreaseHeroLevelCommand_OnExecute(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Hello decrease level handler");
+            var selectedHero = Heroes.SelectedItem as Hero;
+            selectedHero?.DecreaseLevel();
         }
     }
 }
