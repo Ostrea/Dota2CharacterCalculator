@@ -29,6 +29,7 @@
         <!-- Stats -->
         <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="95" Width="140"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
+
             <!-- Left panel -->
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
