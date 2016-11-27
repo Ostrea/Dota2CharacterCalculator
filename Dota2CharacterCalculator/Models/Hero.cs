@@ -2,34 +2,39 @@
 
 namespace Dota2CharacterCalculator.Models
 {
-    public class Hero
+    public abstract class BaseModel
+    {
+        public BitmapImage Icon { get; }
+
+        protected BaseModel(BitmapImage icon)
+        {
+            Icon = icon;
+        }
+    }
+
+    public class Hero : BaseModel
     {
         public string Name { get; }
         public AttackDamage Damage { get; }
 
-        public BitmapImage Icon { get; }
-
-        public Hero(string name, BitmapImage icon, AttackDamage damage)
+        public Hero(string name, BitmapImage icon, AttackDamage damage) : base(icon)
         {
             Name = name;
-            Icon = icon;
             Damage = damage;
         }
     }
 
-    public class AttackDamage
+    public class AttackDamage : BaseModel
     {
         public int Min { get; }
         public int Max { get; }
         public int Average => (Min + Max) / 2;
 
-        public BitmapImage Icon { get; }
 
-        public AttackDamage(int min, int max, BitmapImage icon)
+        public AttackDamage(int min, int max, BitmapImage icon) : base(icon)
         {
             Min = min;
             Max = max;
-            Icon = icon;
         }
     }
 }
