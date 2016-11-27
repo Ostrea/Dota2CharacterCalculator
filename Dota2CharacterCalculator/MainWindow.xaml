@@ -27,11 +27,18 @@
         </ComboBox>
 
         <!-- Stats -->
-        <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="95" Width="170"
+        <StackPanel Orientation="Horizontal" Canvas.Left="46" Canvas.Top="70" Width="170"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
 
             <!-- Left panel -->
             <StackPanel Orientation="Vertical">
+
+                <!-- Level -->
+                <StackPanel Orientation="Horizontal" ToolTip="Level">
+                    <Image Source="Assets/Stats/Minus.png" Width="60" Height="32"/>
+                    <TextBlock Text="fgfgw" />
+                    <Image Source="Assets/Stats/Plus.png" Width="60" Height="32"/>
+                </StackPanel>
 
                 <!-- Damage -->
                 <StackPanel Orientation="Horizontal" ToolTip="Attack Damage">
