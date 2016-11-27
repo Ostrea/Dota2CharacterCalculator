@@ -32,9 +32,17 @@
 
             <!-- Left panel -->
             <StackPanel Orientation="Vertical">
+
+                <!-- Damage -->
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{Binding Damage.Icon}" Width="40" />
                     <TextBlock Text="{Binding Damage.Average}" Padding="15" />
+                </StackPanel>
+
+                <!-- Armor -->
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding Armor.Icon}" Width="40" />
+                    <TextBlock Text="{Binding Armor.BaseArmor}" Padding="15" />
                 </StackPanel>
             </StackPanel>
 

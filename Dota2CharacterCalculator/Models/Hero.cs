@@ -16,11 +16,13 @@ namespace Dota2CharacterCalculator.Models
     {
         public string Name { get; }
         public AttackDamage Damage { get; }
+        public Armor Armor { get; }
 
-        public Hero(string name, BitmapImage icon, AttackDamage damage) : base(icon)
+        public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor) : base(icon)
         {
             Name = name;
             Damage = damage;
+            Armor = armor;
         }
     }
 
@@ -35,6 +37,16 @@ namespace Dota2CharacterCalculator.Models
         {
             Min = min;
             Max = max;
+        }
+    }
+
+    public class Armor : BaseModel
+    {
+        public double BaseArmor { get; }
+
+        public Armor(double baseArmor, BitmapImage icon) : base(icon)
+        {
+            BaseArmor = baseArmor;
         }
     }
 }
