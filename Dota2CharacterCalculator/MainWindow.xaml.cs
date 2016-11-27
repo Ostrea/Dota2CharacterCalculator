@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Dota2CharacterCalculator.Models;
+using Attribute = Dota2CharacterCalculator.Models.Attribute;
 
 namespace Dota2CharacterCalculator
 {
@@ -48,13 +49,23 @@ namespace Dota2CharacterCalculator
             var armorIcon = LoadIcon("Armor", IconType.Stats);
             var msIcon = LoadIcon("MovementSpeed", IconType.Stats);
 
+            var strengthIcon = LoadIcon("Strength", IconType.Stats);
+            var agilityIcon = LoadIcon("Agility", IconType.Stats);
+            var intelligenceIcon = LoadIcon("Intelligence", IconType.Stats);
+
             _heroes.Add(new Hero
                 (
                     "Morphling",
                     LoadIcon("Morphling", IconType.Heroes),
                     new AttackDamage(9, 18, attackDamageIcon),
                     new Armor(-2.0, armorIcon),
-                    new MovementSpeed(285.0, msIcon)
+                    new MovementSpeed(285.0, msIcon),
+                    new Tuple<Attribute, Attribute, Attribute>
+                        (
+                            new Attribute("Strength", 19.0, 2.0, strengthIcon),
+                            new Attribute("Agility", 24.0, 3.7, agilityIcon),
+                            new Attribute("Intelligence", 17.0, 1.1, intelligenceIcon)
+                        )
                 )
             );
             _heroes.Add(new Hero
@@ -63,7 +74,13 @@ namespace Dota2CharacterCalculator
                     LoadIcon("Invoker", IconType.Heroes),
                     new AttackDamage(19, 25, attackDamageIcon),
                     new Armor(-1.0, armorIcon),
-                    new MovementSpeed(280.0, msIcon)
+                    new MovementSpeed(280.0, msIcon),
+                    new Tuple<Attribute, Attribute, Attribute>
+                        (
+                            new Attribute("Strength", 17.0, 1.7, strengthIcon),
+                            new Attribute("Agility", 14.0, 1.9, agilityIcon),
+                            new Attribute("Intelligence", 16.0, 4.0, intelligenceIcon)
+                        )
                 )
             );
 

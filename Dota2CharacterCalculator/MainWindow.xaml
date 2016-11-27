@@ -56,21 +56,24 @@
             <StackPanel Orientation="Vertical">
 
                 <!-- Strength -->
-                <StackPanel Orientation="Horizontal" ToolTip="Strength">
-                    <Image Source="{Binding Damage.Icon}" Width="40" />
-                    <TextBlock Text="{Binding Damage.Average}" Padding="15" />
+                <StackPanel Orientation="Horizontal" DataContext="{Binding Attributes.Item1}"
+                            ToolTip="{Binding Name}">
+                    <Image Source="{Binding Icon}" Width="40" />
+                    <TextBlock Text="{Binding Value}" Padding="15" />
                 </StackPanel>
 
                 <!-- Agility -->
-                <StackPanel Orientation="Horizontal" ToolTip="Agility">
-                    <Image Source="{Binding Armor.Icon}" Width="40" />
-                    <TextBlock Text="{Binding Armor.BaseArmor}" Padding="15" />
+                <StackPanel Orientation="Horizontal" DataContext="{Binding Attributes.Item2}"
+                            ToolTip="{Binding Name}">
+                    <Image Source="{Binding Icon}" Width="40" />
+                    <TextBlock Text="{Binding Value}" Padding="15" />
                 </StackPanel>
 
                 <!-- Intelligence -->
-                <StackPanel Orientation="Horizontal" ToolTip="Intelligence">
-                    <Image Source="{Binding BaseMs.Icon}" Width="40" />
-                    <TextBlock Text="{Binding BaseMs.Value}" Padding="15" />
+                <StackPanel Orientation="Horizontal" DataContext="{Binding Attributes.Item3}"
+                            ToolTip="{Binding Name}">
+                    <Image Source="{Binding Icon}" Width="40" />
+                    <TextBlock Text="{Binding Value}" Padding="15" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

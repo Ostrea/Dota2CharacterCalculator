@@ -105,6 +105,9 @@
     <Resource Include="Assets\Stats\AttackDamage.png" />
     <Resource Include="Assets\Stats\Armor.png" />
     <Resource Include="Assets\Stats\MovementSpeed.png" />
+    <Resource Include="Assets\Stats\Strength.png" />
+    <Resource Include="Assets\Stats\Agility.png" />
+    <Resource Include="Assets\Stats\Intelligence.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

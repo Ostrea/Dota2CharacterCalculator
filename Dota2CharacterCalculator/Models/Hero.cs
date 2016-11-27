@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System;
+using System.Windows.Media.Imaging;
 
 namespace Dota2CharacterCalculator.Models
 {
@@ -18,13 +19,16 @@ namespace Dota2CharacterCalculator.Models
         public AttackDamage Damage { get; }
         public Armor Armor { get; }
         public MovementSpeed BaseMs { get; }
+        public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
 
-        public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor, MovementSpeed baseMs) : base(icon)
+        public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
+                    MovementSpeed baseMs, Tuple<Attribute, Attribute, Attribute> attributes) : base(icon)
         {
             Name = name;
             Damage = damage;
             Armor = armor;
             BaseMs = baseMs;
+            Attributes = attributes;
         }
     }
 
@@ -59,6 +63,20 @@ namespace Dota2CharacterCalculator.Models
         public MovementSpeed(double value, BitmapImage icon) : base(icon)
         {
             Value = value;
+        }
+    }
+
+    public class Attribute : BaseModel
+    {
+        public string Name { get; }
+        public double Value { get; }
+        public double Growth { get; }
+
+        public Attribute(string name, double value, double growth, BitmapImage icon) : base(icon)
+        {
+            Name = name;
+            Value = value;
+            Growth = growth;
         }
     }
 }
