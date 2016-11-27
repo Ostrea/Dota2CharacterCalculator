@@ -100,5 +100,25 @@ namespace Dota2CharacterCalculator
         {
             return new BitmapImage(new Uri($"Assets/{iconType}/{iconName}.png", UriKind.Relative));
         }
+
+        private void IncreaseHeroLevelCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void IncreaseHeroLevelCommand_OnExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Hello increase level handler");
+        }
+
+        private void DecreaseHeroLevelCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void DecreaseHeroLevelCommand_OnExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Hello decrease level handler");
+        }
     }
 }

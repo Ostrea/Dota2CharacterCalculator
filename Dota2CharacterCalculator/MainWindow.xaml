@@ -13,6 +13,15 @@
         </DataTemplate>
     </Window.Resources>
 
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.IncreaseHeroLevel"
+                        CanExecute="IncreaseHeroLevelCommand_CanExecute"
+                        Executed="IncreaseHeroLevelCommand_OnExecute" />
+        <CommandBinding Command="local:Commands.DecreaseHeroLevel"
+                        CanExecute="DecreaseHeroLevelCommand_CanExecute"
+                        Executed="DecreaseHeroLevelCommand_OnExecute" />
+    </Window.CommandBindings>
+
     <Canvas>
         <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="30" Margin="46,22,0,0"
                  VerticalAlignment="Top" Width="170" IsSynchronizedWithCurrentItem="True">
@@ -44,13 +53,15 @@
 
             <!-- Level -->
             <Button Grid.Row="0" Grid.Column="0"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Command="local:Commands.DecreaseHeroLevel">
                 <Image  Source="Assets/Stats/Minus.png" />
             </Button>
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Level}"
                        Padding="15" TextAlignment="Center" ToolTip="Level" />
             <Button Grid.Row="0" Grid.Column="3"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Command="local:Commands.IncreaseHeroLevel">
                 <Image  Source="Assets/Stats/Plus.png" />
             </Button>
 
