@@ -44,6 +44,12 @@
                     <Image Source="{Binding Armor.Icon}" Width="40" />
                     <TextBlock Text="{Binding Armor.BaseArmor}" Padding="15" />
                 </StackPanel>
+
+                <!-- Movement Speed -->
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding BaseMs.Icon}" Width="40" />
+                    <TextBlock Text="{Binding BaseMs.Value}" Padding="15" />
+                </StackPanel>
             </StackPanel>
 
             <!-- Right panel -->

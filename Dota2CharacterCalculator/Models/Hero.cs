@@ -17,12 +17,14 @@ namespace Dota2CharacterCalculator.Models
         public string Name { get; }
         public AttackDamage Damage { get; }
         public Armor Armor { get; }
+        public MovementSpeed BaseMs { get; }
 
-        public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor) : base(icon)
+        public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor, MovementSpeed baseMs) : base(icon)
         {
             Name = name;
             Damage = damage;
             Armor = armor;
+            BaseMs = baseMs;
         }
     }
 
@@ -47,6 +49,16 @@ namespace Dota2CharacterCalculator.Models
         public Armor(double baseArmor, BitmapImage icon) : base(icon)
         {
             BaseArmor = baseArmor;
+        }
+    }
+
+    public class MovementSpeed : BaseModel
+    {
+        public double Value { get; }
+
+        public MovementSpeed(double value, BitmapImage icon) : base(icon)
+        {
+            Value = value;
         }
     }
 }

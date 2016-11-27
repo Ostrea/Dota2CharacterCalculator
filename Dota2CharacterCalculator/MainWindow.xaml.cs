@@ -46,13 +46,15 @@ namespace Dota2CharacterCalculator
 
             var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
             var armorIcon = LoadIcon("Armor", IconType.Stats);
+            var msIcon = LoadIcon("MovementSpeed", IconType.Stats);
 
             _heroes.Add(new Hero
                 (
                     "Morphling",
                     LoadIcon("Morphling", IconType.Heroes),
                     new AttackDamage(9, 18, attackDamageIcon),
-                    new Armor(-2.0, armorIcon)
+                    new Armor(-2.0, armorIcon),
+                    new MovementSpeed(285.0, msIcon)
                 )
             );
             _heroes.Add(new Hero
@@ -60,7 +62,8 @@ namespace Dota2CharacterCalculator
                     "Invoker",
                     LoadIcon("Invoker", IconType.Heroes),
                     new AttackDamage(19, 25, attackDamageIcon),
-                    new Armor(-1.0, armorIcon)
+                    new Armor(-1.0, armorIcon),
+                    new MovementSpeed(280.0, msIcon)
                 )
             );
 
