@@ -58,6 +58,8 @@ namespace Dota2CharacterCalculator.Models
             Damage.ChangeDamage(GetPrimaryAttribute().Value);
 
             Armor = armor;
+            Armor.Change(Attributes.Item2.Value);
+
             BaseMs = baseMs;
             Level = level;
         }
@@ -72,6 +74,7 @@ namespace Dota2CharacterCalculator.Models
             Level++;
             ChangeAttributes();
             Damage.ChangeDamage(GetPrimaryAttribute().Value);
+            Armor.Change(Attributes.Item2.Value);
         }
 
         public bool CanDecreaseLevel()
@@ -84,6 +87,7 @@ namespace Dota2CharacterCalculator.Models
             Level--;
             ChangeAttributes();
             Damage.ChangeDamage(GetPrimaryAttribute().Value);
+            Armor.Change(Attributes.Item2.Value);
         }
 
         private void ChangeAttributes()
@@ -138,9 +142,17 @@ namespace Dota2CharacterCalculator.Models
     {
         public double BaseArmor { get; }
 
+        public double MainArmor { get; private set; }
+
         public Armor(double baseArmor, BitmapImage icon) : base(icon)
         {
             BaseArmor = baseArmor;
+        }
+
+        public void Change(double agilityValue)
+        {
+            MainArmor = BaseArmor + agilityValue / 7.0;
+            NotifyProperyChanged(nameof(MainArmor));
         }
     }
 
