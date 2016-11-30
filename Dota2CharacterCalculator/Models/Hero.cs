@@ -55,7 +55,7 @@ namespace Dota2CharacterCalculator.Models
             PrimaryAttribute = primaryAttribute;
 
             Damage = damage;
-            Damage.ChangeDamage(GetPrimaryAttribute().Value);
+            Damage.Change(GetPrimaryAttribute().Value);
 
             Armor = armor;
             Armor.Change(Attributes.Item2.Value);
@@ -73,7 +73,7 @@ namespace Dota2CharacterCalculator.Models
         {
             Level++;
             ChangeAttributes();
-            Damage.ChangeDamage(GetPrimaryAttribute().Value);
+            Damage.Change(GetPrimaryAttribute().Value);
             Armor.Change(Attributes.Item2.Value);
         }
 
@@ -86,7 +86,7 @@ namespace Dota2CharacterCalculator.Models
         {
             Level--;
             ChangeAttributes();
-            Damage.ChangeDamage(GetPrimaryAttribute().Value);
+            Damage.Change(GetPrimaryAttribute().Value);
             Armor.Change(Attributes.Item2.Value);
         }
 
@@ -130,7 +130,7 @@ namespace Dota2CharacterCalculator.Models
             BaseMax = baseMax;
         }
 
-        public void ChangeDamage(double attributeValue)
+        public void Change(double attributeValue)
         {
             MainMin = BaseMin + (int)attributeValue;
             MainMax = BaseMax + (int)attributeValue;
