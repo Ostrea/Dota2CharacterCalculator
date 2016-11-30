@@ -38,11 +38,10 @@ namespace Dota2CharacterCalculator
             foreach (var child in Inventory.Children)
             {
                 var inventoryItem = child as ComboBox;
-                if (inventoryItem != null)
-                {
-                    inventoryItem.ItemsSource = _items;
-                }
+                if (inventoryItem == null) continue;
 
+                inventoryItem.ItemsSource = _items;
+                inventoryItem.SelectionChanged += OnInventoryItemChange;
             }
 
             var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
@@ -53,7 +52,7 @@ namespace Dota2CharacterCalculator
             var agilityIcon = LoadIcon("Agility", IconType.Stats);
             var intelligenceIcon = LoadIcon("Intelligence", IconType.Stats);
 
-            _heroes.Add(new Hero
+            var morph = new Hero
                 (
                     "Morphling",
                     LoadIcon("Morphling", IconType.Heroes),
@@ -61,16 +60,17 @@ namespace Dota2CharacterCalculator
                     new Armor(-2.0, armorIcon),
                     new MovementSpeed(285.0, msIcon),
                     new Tuple<Attribute, Attribute, Attribute>
-                        (
-                            new Attribute(AttributeType.Strength, 19.0, 2.0, strengthIcon),
-                            new Attribute(AttributeType.Agility, 24.0, 3.7, agilityIcon),
-                            new Attribute(AttributeType.Intelligence, 17.0, 1.1, intelligenceIcon)
-                        ),
+                    (
+                        new Attribute(AttributeType.Strength, 19.0, 2.0, strengthIcon),
+                        new Attribute(AttributeType.Agility, 24.0, 3.7, agilityIcon),
+                        new Attribute(AttributeType.Intelligence, 17.0, 1.1, intelligenceIcon)
+                    ),
                     1,
                     AttributeType.Agility
-                )
-            );
-            _heroes.Add(new Hero
+                );
+            morph.Items.Add(_items[0]);
+
+            var invoker = new Hero
                 (
                     "Invoker",
                     LoadIcon("Invoker", IconType.Heroes),
@@ -78,15 +78,18 @@ namespace Dota2CharacterCalculator
                     new Armor(-1.0, armorIcon),
                     new MovementSpeed(280.0, msIcon),
                     new Tuple<Attribute, Attribute, Attribute>
-                        (
-                            new Attribute(AttributeType.Strength, 17.0, 1.7, strengthIcon),
-                            new Attribute(AttributeType.Agility, 14.0, 1.9, agilityIcon),
-                            new Attribute(AttributeType.Intelligence, 16.0, 4.0, intelligenceIcon)
-                        ),
+                    (
+                        new Attribute(AttributeType.Strength, 17.0, 1.7, strengthIcon),
+                        new Attribute(AttributeType.Agility, 14.0, 1.9, agilityIcon),
+                        new Attribute(AttributeType.Intelligence, 16.0, 4.0, intelligenceIcon)
+                    ),
                     1,
                     AttributeType.Intelligence
-                )
-            );
+                );
+            invoker.Items.Add(_items[1]);
+
+            _heroes.Add(morph);
+            _heroes.Add(invoker);
 
             Heroes.ItemsSource = _heroes;
         }
@@ -125,6 +128,12 @@ namespace Dota2CharacterCalculator
         {
             var selectedHero = Heroes.SelectedItem as Hero;
             selectedHero?.DecreaseLevel();
+        }
+
+        private void OnInventoryItemChange(object sender, SelectionChangedEventArgs e)
+        {
+//            MessageBox.Show((sender as ComboBox).Name);
+//            MessageBox.Show((FirstItemInInventory.SelectedItem as Item).Name);
         }
     }
 }

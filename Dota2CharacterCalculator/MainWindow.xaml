@@ -104,7 +104,8 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
-              Canvas.Left="655" Canvas.Top="25" x:Name="Inventory">
+              Canvas.Left="655" Canvas.Top="25" x:Name="Inventory"
+              DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <Grid.Resources>
                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</system:Double>
             </Grid.Resources>
@@ -119,7 +120,8 @@
             </Grid.RowDefinitions>
 
             <ComboBox Grid.Row="0" Grid.Column="0" x:Name="FirstItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+                      ItemTemplate="{StaticResource InventoryItemFormat}"
+                      SelectedItem="{Binding Items[0]}"/>
             <ComboBox Grid.Row="0" Grid.Column="1" x:Name="SecondItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}" />
             <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ThirdItemInInventory"
