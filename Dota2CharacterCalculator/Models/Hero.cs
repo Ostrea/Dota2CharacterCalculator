@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
 using System.Windows.Media.Imaging;
 
 namespace Dota2CharacterCalculator.Models
@@ -66,6 +67,7 @@ namespace Dota2CharacterCalculator.Models
         public void IncreaseLevel()
         {
             Level++;
+            ChangeAttributes();
         }
 
         public bool CanDecreaseLevel()
@@ -76,6 +78,14 @@ namespace Dota2CharacterCalculator.Models
         public void DecreaseLevel()
         {
             Level--;
+            ChangeAttributes();
+        }
+
+        private void ChangeAttributes()
+        {
+            Attributes.Item1.Change(Level);
+            Attributes.Item2.Change(Level);
+            Attributes.Item3.Change(Level);
         }
     }
 
@@ -127,14 +137,28 @@ namespace Dota2CharacterCalculator.Models
     public class Attribute : BaseModel
     {
         public AttributeType Type { get; }
-        public double Value { get; }
+        public double Value { get; private set; }
         public double Growth { get; }
+
+        private readonly double _startingValue;
 
         public Attribute(AttributeType type, double value, double growth, BitmapImage icon) : base(icon)
         {
             Type = type;
             Value = value;
             Growth = growth;
+            _startingValue = value;
+        }
+
+        public void Change(int level)
+        {
+            Value = _startingValue;
+
+            for (var i = 0; i < level-1; i++)
+            {
+                Value += Growth;
+            }
+            NotifyProperyChanged(nameof(Value));
         }
     }
 
