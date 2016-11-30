@@ -11,6 +11,7 @@
         <DataTemplate x:Key="InventoryItemFormat">
             <Image Source="{Binding Icon}" ToolTip="{Binding Name}" />
         </DataTemplate>
+        <system:Double x:Key="HeroBlockWidth">175</system:Double>
     </Window.Resources>
 
     <Window.CommandBindings>
@@ -24,7 +25,7 @@
 
     <Canvas>
         <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="30" Margin="46,22,0,0"
-                 VerticalAlignment="Top" Width="170" IsSynchronizedWithCurrentItem="True">
+                 VerticalAlignment="Top" Width="{StaticResource HeroBlockWidth}" IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -36,7 +37,7 @@
         </ComboBox>
 
         <!-- Stats -->
-        <Grid  Canvas.Left="46" Canvas.Top="70" Width="170"
+        <Grid  Canvas.Left="46" Canvas.Top="70" Width="{StaticResource HeroBlockWidth}"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
