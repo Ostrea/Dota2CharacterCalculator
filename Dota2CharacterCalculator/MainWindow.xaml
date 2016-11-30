@@ -11,7 +11,7 @@
         <DataTemplate x:Key="InventoryItemFormat">
             <Image Source="{Binding Icon}" ToolTip="{Binding Name}" />
         </DataTemplate>
-        <system:Double x:Key="HeroBlockWidth">175</system:Double>
+        <system:Double x:Key="HeroBlockWidth">200</system:Double>
     </Window.Resources>
 
     <Window.CommandBindings>
@@ -75,7 +75,8 @@
             <!-- Armor -->
             <Image Grid.Row="2" Grid.Column="0" Source="{Binding Armor.Icon}" Width="40"
                    ToolTip="Armor" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.MainArmor}" Padding="15" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.MainArmor, StringFormat={}{0:f2}}"
+                       Padding="15" />
 
             <!-- Movement Speed -->
             <Image Grid.Row="3" Grid.Column="0" Source="{Binding BaseMs.Icon}" Width="40"
@@ -86,17 +87,20 @@
             <!-- Strength -->
             <Image Grid.Row="1" Grid.Column="2" Source="{Binding Attributes.Item1.Icon}" Width="40"
                    ToolTip="Strength" />
-            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Attributes.Item1.Value}" Padding="15" />
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Attributes.Item1.Value, StringFormat={}{0:f2}}"
+                       Padding="15" />
 
             <!-- Agility -->
             <Image Grid.Row="2" Grid.Column="2" Source="{Binding Attributes.Item2.Icon}" Width="40"
                    ToolTip="Agility" />
-            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Attributes.Item2.Value}" Padding="15" />
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Attributes.Item2.Value, StringFormat={}{0:f2}}"
+                       Padding="15" />
 
             <!-- Intelligence -->
             <Image Grid.Row="3" Grid.Column="2" Source="{Binding Attributes.Item3.Icon}" Width="40"
                    ToolTip="Intelligence" />
-            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Attributes.Item3.Value}" Padding="15" />
+            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Attributes.Item3.Value, StringFormat={}{0:f2}}"
+                       Padding="15" />
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
