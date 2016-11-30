@@ -50,13 +50,16 @@ namespace Dota2CharacterCalculator.Models
         {
             Name = name;
 
+            // Need to do it before damage calculation
+            Attributes = attributes;
+            PrimaryAttribute = primaryAttribute;
+
             Damage = damage;
+            Damage.ChangeDamage(GetPrimaryAttribute().Value);
 
             Armor = armor;
             BaseMs = baseMs;
-            Attributes = attributes;
             Level = level;
-            PrimaryAttribute = primaryAttribute;
         }
 
         public bool CanIncreaseLevel()
@@ -68,6 +71,7 @@ namespace Dota2CharacterCalculator.Models
         {
             Level++;
             ChangeAttributes();
+            Damage.ChangeDamage(GetPrimaryAttribute().Value);
         }
 
         public bool CanDecreaseLevel()
@@ -79,6 +83,7 @@ namespace Dota2CharacterCalculator.Models
         {
             Level--;
             ChangeAttributes();
+            Damage.ChangeDamage(GetPrimaryAttribute().Value);
         }
 
         private void ChangeAttributes()
@@ -87,12 +92,27 @@ namespace Dota2CharacterCalculator.Models
             Attributes.Item2.Change(Level);
             Attributes.Item3.Change(Level);
         }
+
+        private Attribute GetPrimaryAttribute()
+        {
+            switch (PrimaryAttribute)
+            {
+                case AttributeType.Strength:
+                    return Attributes.Item1;
+                case AttributeType.Agility:
+                    return Attributes.Item2;
+                case AttributeType.Intelligence:
+                    return Attributes.Item3;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 
     public class AttackDamage : BaseModel
     {
-        public int Min { get; }
-        public int Max { get; }
+        public int BaseMin { get; }
+        public int BaseMax { get; }
 
         public int MainMax { get; private set; }
         public int MainMin { get; private set; }
@@ -100,16 +120,16 @@ namespace Dota2CharacterCalculator.Models
         public int Average => (MainMin + MainMax) / 2;
 
 
-        public AttackDamage(int min, int max, BitmapImage icon) : base(icon)
+        public AttackDamage(int baseMin, int baseMax, BitmapImage icon) : base(icon)
         {
-            Min = min;
-            Max = max;
+            BaseMin = baseMin;
+            BaseMax = baseMax;
         }
 
         public void ChangeDamage(double attributeValue)
         {
-            MainMin = Min + (int)attributeValue;
-            MainMax = Max + (int)attributeValue;
+            MainMin = BaseMin + (int)attributeValue;
+            MainMax = BaseMax + (int)attributeValue;
             NotifyProperyChanged(nameof(Average));
         }
     }
