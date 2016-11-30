@@ -48,7 +48,9 @@ namespace Dota2CharacterCalculator.Models
                     int level, AttributeType primaryAttribute) : base(icon)
         {
             Name = name;
+
             Damage = damage;
+
             Armor = armor;
             BaseMs = baseMs;
             Attributes = attributes;
@@ -81,13 +83,24 @@ namespace Dota2CharacterCalculator.Models
     {
         public int Min { get; }
         public int Max { get; }
-        public int Average => (Min + Max) / 2;
+
+        public int MainMax { get; private set; }
+        public int MainMin { get; private set; }
+
+        public int Average => (MainMin + MainMax) / 2;
 
 
         public AttackDamage(int min, int max, BitmapImage icon) : base(icon)
         {
             Min = min;
             Max = max;
+        }
+
+        public void ChangeDamage(double attributeValue)
+        {
+            MainMin = Min + (int)attributeValue;
+            MainMax = Max + (int)attributeValue;
+            NotifyProperyChanged(nameof(Average));
         }
     }
 
