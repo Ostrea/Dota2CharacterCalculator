@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Windows.Media.Imaging;
@@ -50,7 +51,7 @@ namespace Dota2CharacterCalculator.Models
         {
             Name = name;
 
-            // Need to do it before damage calculation
+            // Need to do it before damage and armor calculation
             Attributes = attributes;
             PrimaryAttribute = primaryAttribute;
 
