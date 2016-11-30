@@ -75,7 +75,7 @@
             <!-- Armor -->
             <Image Grid.Row="2" Grid.Column="0" Source="{Binding Armor.Icon}" Width="40"
                    ToolTip="Armor" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.BaseArmor}" Padding="15" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.MainArmor}" Padding="15" />
 
             <!-- Movement Speed -->
             <Image Grid.Row="3" Grid.Column="0" Source="{Binding BaseMs.Icon}" Width="40"
