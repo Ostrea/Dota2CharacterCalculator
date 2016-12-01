@@ -36,7 +36,6 @@ namespace Dota2CharacterCalculator.Models
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
         public AttributeType PrimaryAttribute { get; }
 
-//        public Item[] Items { get; } = new Item[6];
         public ObservableCollection<Item> Items { get; } = new ObservableCollection<Item>();
 
         private int _level;
