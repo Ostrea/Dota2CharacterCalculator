@@ -64,8 +64,7 @@ namespace Dota2CharacterCalculator.Models
             PrimaryAttribute = primaryAttribute;
 
             Damage = damage;
-//            Damage.SetHero(this);
-//            Damage.Change(GetPrimaryAttribute().Value);
+            Damage.SetPrimaryAttribute(GetPrimaryAttribute());
 
             Armor = armor;
 //            Armor.SetHero(this);
@@ -82,9 +81,7 @@ namespace Dota2CharacterCalculator.Models
 
         public void IncreaseLevel()
         {
-            // First event is raised and then attribute changes
             Level++;
-//            Damage.Change(GetPrimaryAttribute().Value);
 //            Armor.Change(Attributes.Item2.Value);
         }
 
@@ -96,7 +93,6 @@ namespace Dota2CharacterCalculator.Models
         public void DecreaseLevel()
         {
             Level--;
-//            Damage.Change(GetPrimaryAttribute().Value);
 //            Armor.Change(Attributes.Item2.Value);
         }
 
@@ -135,6 +131,22 @@ namespace Dota2CharacterCalculator.Models
 
         public void Change(double attributeValue)
         {
+            MainMin = BaseMin + (int)attributeValue;
+            MainMax = BaseMax + (int)attributeValue;
+            NotifyProperyChanged(nameof(Average));
+        }
+
+        public void SetPrimaryAttribute(Attribute attribute)
+        {
+            attribute.PropertyChanged += OnAttributePropertyChange;
+        }
+
+        private void OnAttributePropertyChange(object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName != nameof(Attribute.Value)) return;
+
+            var attributeValue = ((Attribute) sender).Value;
+
             MainMin = BaseMin + (int)attributeValue;
             MainMax = BaseMax + (int)attributeValue;
             NotifyProperyChanged(nameof(Average));
