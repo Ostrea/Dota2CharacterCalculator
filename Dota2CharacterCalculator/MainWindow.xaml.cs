@@ -41,6 +41,9 @@ namespace Dota2CharacterCalculator
             _items.Add(new Item("Blades of Attack", LoadIcon("BladesOfAttack", IconType.Items))
                 {AttackDamageBonus = 9});
 
+            _items.Add(new Item("Phase Boots", LoadIcon("PhaseBoots", IconType.Items))
+                {MovementSpeedBonus = 45, AttackDamageBonus = 24});
+
             foreach (var child in Inventory.Children)
             {
                 var inventoryItem = child as ComboBox;
