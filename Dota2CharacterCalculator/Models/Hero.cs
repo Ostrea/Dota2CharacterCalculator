@@ -39,6 +39,7 @@ namespace Dota2CharacterCalculator.Models
         public ObservableCollection<Item> Items { get; } = new ObservableCollection<Item>();
 
         public ObservableCollection<string> ActiveEffects { get; } = new ObservableCollection<string>();
+        public ObservableCollection<string> PassiveEffects { get; } = new ObservableCollection<string>();
 
         private int _level;
         public int Level

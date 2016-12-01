@@ -10,6 +10,7 @@ namespace Dota2CharacterCalculator.Models
         public double? MovementSpeedBonus { get; set; }
         public int? AttackDamageBonus { get; set; }
         public List<string> AdditionalActiveProperties { get; set; } = new List<string>();
+        public List<string> AdditionalPassiveProperties { get; set; } = new List<string>();
 
         public Item(string name, BitmapImage icon)
         {
