@@ -100,13 +100,6 @@ namespace Dota2CharacterCalculator.Models
 //            Armor.Change(Attributes.Item2.Value);
         }
 
-        private void ChangeAttributes()
-        {
-            Attributes.Item1.Change(Level);
-            Attributes.Item2.Change(Level);
-            Attributes.Item3.Change(Level);
-        }
-
         private Attribute GetPrimaryAttribute()
         {
             switch (PrimaryAttribute)
@@ -190,17 +183,6 @@ namespace Dota2CharacterCalculator.Models
             Value = value;
             Growth = growth;
             _startingValue = value;
-        }
-
-        public void Change(int level)
-        {
-            Value = _startingValue;
-
-            for (var i = 0; i < level-1; i++)
-            {
-                Value += Growth;
-            }
-            NotifyProperyChanged(nameof(Value));
         }
 
         public void SetHero(Hero hero)
