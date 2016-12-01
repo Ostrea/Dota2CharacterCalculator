@@ -121,22 +121,28 @@
 
             <ComboBox Grid.Row="0" Grid.Column="0" x:Name="FirstItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[0]}"/>
+                      SelectedItem="{Binding Items[0]}"
+                      ToolTip="{Binding Items[0].Name}" />
             <ComboBox Grid.Row="0" Grid.Column="1" x:Name="SecondItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[1]}"/>
+                      SelectedItem="{Binding Items[1]}"
+                      ToolTip="{Binding Items[1].Name}" />
             <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ThirdItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[2]}"/>
+                      SelectedItem="{Binding Items[2]}"
+                      ToolTip="{Binding Items[2].Name}" />
             <ComboBox Grid.Row="1" Grid.Column="0" x:Name="FourthItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[3]}"/>
+                      SelectedItem="{Binding Items[3]}"
+                      ToolTip="{Binding Items[3].Name}" />
             <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FifthItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[4]}"/>
+                      SelectedItem="{Binding Items[4]}"
+                      ToolTip="{Binding Items[4].Name}" />
             <ComboBox Grid.Row="1" Grid.Column="2" x:Name="SixthItemInInventory"
                       ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[5]}"/>
+                      SelectedItem="{Binding Items[5]}"
+                      ToolTip="{Binding Items[5].Name}" />
         </Grid>
     </Canvas>
 </Window>
