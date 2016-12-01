@@ -133,7 +133,7 @@ namespace Dota2CharacterCalculator.Models
             {
                 MovementSpeed.BonusValue += newItem.MovementSpeedBonus.Value;
             }
-            if (newItem?.AttackDamageBonus != null)
+            if (newItem.AttackDamageBonus != null)
             {
                 Damage.BonusValue += newItem.AttackDamageBonus.Value;
             }
