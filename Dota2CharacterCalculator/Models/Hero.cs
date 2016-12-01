@@ -189,6 +189,8 @@ namespace Dota2CharacterCalculator.Models
     public class MovementSpeed : BaseModel
     {
         public double BaseValue { get; }
+        public double BonusValue { get; set; } = 0;
+        public double TotalValue => BaseValue + BonusValue;
 
         public MovementSpeed(double baseValue, BitmapImage icon) : base(icon)
         {
