@@ -117,14 +117,15 @@
         </StackPanel>
 
         <!-- Item effects -->
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical"
+        <TextBlock Grid.Row="0" Grid.Column="1" TextAlignment="Center">Effects</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
-            <TextBlock TextAlignment="Center">Effects</TextBlock>
             <TextBlock TextAlignment="Center">Passive</TextBlock>
             <TextBlock TextAlignment="Center">Active</TextBlock>
         </StackPanel>
 
         <!-- Inventory -->
+        <TextBlock Grid.Row="0" Grid.Column="2" TextAlignment="Center">Inventory</TextBlock>
         <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Height="150" x:Name="Inventory"
               DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <Grid.Resources>
