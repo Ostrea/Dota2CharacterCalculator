@@ -67,6 +67,8 @@ namespace Dota2CharacterCalculator.Models
             Damage.SetPrimaryAttribute(GetPrimaryAttribute());
 
             Armor = armor;
+            Armor.SetAgilityAttribute(Attributes.Item2);
+
 //            Armor.SetHero(this);
 //            Armor.Change(Attributes.Item2.Value);
 
@@ -166,6 +168,21 @@ namespace Dota2CharacterCalculator.Models
 
         public void Change(double agilityValue)
         {
+            MainArmor = BaseArmor + agilityValue / 7.0;
+            NotifyProperyChanged(nameof(MainArmor));
+        }
+
+        public void SetAgilityAttribute(Attribute agility)
+        {
+            agility.PropertyChanged += OnAgilityPropertyChange;
+        }
+
+        private void OnAgilityPropertyChange(object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName != nameof(Attribute.Value)) return;
+
+            var agilityValue = ((Attribute) sender).Value;
+
             MainArmor = BaseArmor + agilityValue / 7.0;
             NotifyProperyChanged(nameof(MainArmor));
         }
