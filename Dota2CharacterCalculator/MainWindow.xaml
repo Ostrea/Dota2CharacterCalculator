@@ -123,15 +123,20 @@
                       ItemTemplate="{StaticResource InventoryItemFormat}"
                       SelectedItem="{Binding Items[0]}"/>
             <ComboBox Grid.Row="0" Grid.Column="1" x:Name="SecondItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+                      ItemTemplate="{StaticResource InventoryItemFormat}"
+                      SelectedItem="{Binding Items[1]}"/>
             <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ThirdItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+                      ItemTemplate="{StaticResource InventoryItemFormat}"
+                      SelectedItem="{Binding Items[2]}"/>
             <ComboBox Grid.Row="1" Grid.Column="0" x:Name="FourthItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+                      ItemTemplate="{StaticResource InventoryItemFormat}"
+                      SelectedItem="{Binding Items[3]}"/>
             <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FifthItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+                      ItemTemplate="{StaticResource InventoryItemFormat}"
+                      SelectedItem="{Binding Items[4]}"/>
             <ComboBox Grid.Row="1" Grid.Column="2" x:Name="SixthItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}" />
+                      ItemTemplate="{StaticResource InventoryItemFormat}"
+                      SelectedItem="{Binding Items[5]}"/>
         </Grid>
     </Canvas>
 </Window>
