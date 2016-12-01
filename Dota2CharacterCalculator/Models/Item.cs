@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System.Collections.Generic;
+using System.Windows.Media.Imaging;
 
 namespace Dota2CharacterCalculator.Models
 {
@@ -8,6 +9,7 @@ namespace Dota2CharacterCalculator.Models
         public BitmapImage Icon { get; }
         public double? MovementSpeedBonus { get; set; }
         public int? AttackDamageBonus { get; set; }
+        public List<string> AdditionalActiveProperties { get; set; } = new List<string>();
 
         public Item(string name, BitmapImage icon)
         {

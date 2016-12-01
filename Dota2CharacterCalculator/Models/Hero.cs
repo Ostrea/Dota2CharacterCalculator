@@ -38,6 +38,8 @@ namespace Dota2CharacterCalculator.Models
 
         public ObservableCollection<Item> Items { get; } = new ObservableCollection<Item>();
 
+        public ObservableCollection<string> ActiveEffects { get; } = new ObservableCollection<string>();
+
         private int _level;
         public int Level
         {
@@ -127,6 +129,13 @@ namespace Dota2CharacterCalculator.Models
             {
                 Damage.BonusValue -= previousItem.AttackDamageBonus.Value;
             }
+            if (previousItem != null && previousItem.AdditionalActiveProperties.Count != 0)
+            {
+                foreach (var activeProperty in previousItem.AdditionalActiveProperties)
+                {
+                    ActiveEffects.Remove(activeProperty);
+                }
+            }
 
             var newItem = (Item) e.NewItems[0];
             if (newItem.MovementSpeedBonus != null)
@@ -136,6 +145,13 @@ namespace Dota2CharacterCalculator.Models
             if (newItem.AttackDamageBonus != null)
             {
                 Damage.BonusValue += newItem.AttackDamageBonus.Value;
+            }
+            if (newItem.AdditionalActiveProperties.Count != 0)
+            {
+                foreach (var activeProperty in newItem.AdditionalActiveProperties)
+                {
+                    ActiveEffects.Add(activeProperty);
+                }
             }
         }
     }

@@ -117,6 +117,7 @@
         </StackPanel>
 
         <!-- Item effects -->
+        <!-- Passive -->
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <TextBlock TextAlignment="Center">Effects</TextBlock>
@@ -129,9 +130,12 @@
                 </ListView.ItemContainerStyle>
             </ListView>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1">
+
+        <!-- Active -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical"
+                    DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <TextBlock TextAlignment="Center">Active</TextBlock>
-            <ListView Height="100" BorderThickness="0">
+            <ListView Height="100" BorderThickness="0" ItemsSource="{Binding ActiveEffects}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Focusable" Value="false"/>
