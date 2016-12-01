@@ -6,6 +6,7 @@ namespace Dota2CharacterCalculator.Models
     {
         public string Name { get; }
         public BitmapImage Icon { get; }
+        public double? MovementSpeedBonus { get; set; }
 
         public Item(string name, BitmapImage icon)
         {

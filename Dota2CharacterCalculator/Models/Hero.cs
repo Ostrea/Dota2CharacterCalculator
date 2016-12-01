@@ -119,9 +119,17 @@ namespace Dota2CharacterCalculator.Models
 
         private void OnInventoryChange(object sender, NotifyCollectionChangedEventArgs e)
         {
-//            MessageBox.Show(((Item) e.OldItems[0])?.Name);
-//            MessageBox.Show(e.OldStartingIndex.ToString());
-//            MessageBox.Show(sender.GetType().ToString());
+            var previousItem = e.OldItems?[0] as Item;
+            if (previousItem?.MovementSpeedBonus != null)
+            {
+                MovementSpeed.BonusValue -= previousItem.MovementSpeedBonus.Value;
+            }
+
+            var newItem = (Item) e.NewItems[0];
+            if (newItem.MovementSpeedBonus != null)
+            {
+                MovementSpeed.BonusValue += newItem.MovementSpeedBonus.Value;
+            }
         }
     }
 
@@ -189,7 +197,20 @@ namespace Dota2CharacterCalculator.Models
     public class MovementSpeed : BaseModel
     {
         public double BaseValue { get; }
-        public double BonusValue { get; set; } = 0;
+
+        private double _bonusValue;
+        public double BonusValue
+        {
+            get { return _bonusValue; }
+            set
+            {
+                if (Math.Abs(_bonusValue - value) < 1e-5) return;
+
+                _bonusValue = value;
+                NotifyProperyChanged(nameof(TotalValue));
+            }
+        }
+
         public double TotalValue => BaseValue + BonusValue;
 
         public MovementSpeed(double baseValue, BitmapImage icon) : base(icon)
