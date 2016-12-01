@@ -101,6 +101,7 @@
   <ItemGroup>
     <Resource Include="Assets\Items\Butterfly.png" />
     <Resource Include="Assets\Items\Satanic.png" />
+    <Resource Include="Assets\Items\BootsOfSpeed.png" />
     <Resource Include="Assets\Heroes\Morphling.png" />
     <Resource Include="Assets\Heroes\Invoker.png" />
     <Resource Include="Assets\Stats\AttackDamage.png" />
