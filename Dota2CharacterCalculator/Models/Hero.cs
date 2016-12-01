@@ -1,7 +1,9 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace Dota2CharacterCalculator.Models
@@ -55,13 +57,19 @@ namespace Dota2CharacterCalculator.Models
 
             // Need to do it before damage and armor calculation
             Attributes = attributes;
+            Attributes.Item1.SetHero(this);
+            Attributes.Item2.SetHero(this);
+            Attributes.Item3.SetHero(this);
+
             PrimaryAttribute = primaryAttribute;
 
             Damage = damage;
-            Damage.Change(GetPrimaryAttribute().Value);
+//            Damage.SetHero(this);
+//            Damage.Change(GetPrimaryAttribute().Value);
 
             Armor = armor;
-            Armor.Change(Attributes.Item2.Value);
+//            Armor.SetHero(this);
+//            Armor.Change(Attributes.Item2.Value);
 
             BaseMs = baseMs;
             Level = level;
@@ -74,10 +82,10 @@ namespace Dota2CharacterCalculator.Models
 
         public void IncreaseLevel()
         {
+            // First event is raised and then attribute changes
             Level++;
-            ChangeAttributes();
-            Damage.Change(GetPrimaryAttribute().Value);
-            Armor.Change(Attributes.Item2.Value);
+//            Damage.Change(GetPrimaryAttribute().Value);
+//            Armor.Change(Attributes.Item2.Value);
         }
 
         public bool CanDecreaseLevel()
@@ -88,9 +96,8 @@ namespace Dota2CharacterCalculator.Models
         public void DecreaseLevel()
         {
             Level--;
-            ChangeAttributes();
-            Damage.Change(GetPrimaryAttribute().Value);
-            Armor.Change(Attributes.Item2.Value);
+//            Damage.Change(GetPrimaryAttribute().Value);
+//            Armor.Change(Attributes.Item2.Value);
         }
 
         private void ChangeAttributes()
@@ -193,6 +200,26 @@ namespace Dota2CharacterCalculator.Models
             {
                 Value += Growth;
             }
+            NotifyProperyChanged(nameof(Value));
+        }
+
+        public void SetHero(Hero hero)
+        {
+            hero.PropertyChanged += OnHeroPropertyChange;
+        }
+
+        private void OnHeroPropertyChange(object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName != nameof(Hero.Level)) return;
+
+            Value = _startingValue;
+            var hero = (Hero) sender;
+
+            for (var i = 0; i < hero.Level-1; i++)
+            {
+                Value += Growth;
+            }
+
             NotifyProperyChanged(nameof(Value));
         }
     }
