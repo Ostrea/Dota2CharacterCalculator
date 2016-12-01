@@ -38,6 +38,9 @@ namespace Dota2CharacterCalculator
             _items.Add(new Item("Boots of Speed", LoadIcon("BootsOfSpeed", IconType.Items))
                 {MovementSpeedBonus = 45.0});
 
+            _items.Add(new Item("Blades of Attack", LoadIcon("BladesOfAttack", IconType.Items))
+                {AttackDamageBonus = 9});
+
             foreach (var child in Inventory.Children)
             {
                 var inventoryItem = child as ComboBox;
