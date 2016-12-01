@@ -32,8 +32,20 @@ namespace Dota2CharacterCalculator
             InitializeComponent();
             DataContext = this;
 
-            _items.Add(new Item("Butterfly", LoadIcon("Butterfly", IconType.Items)));
-            _items.Add(new Item("Satanic", LoadIcon("Satanic", IconType.Items)));
+            var butterfly = new Item("Butterfly", LoadIcon("Butterfly", IconType.Items))
+                {AttackDamageBonus = 30};
+            butterfly.AdditionalPassiveProperties.Add("Attack speed +30");
+            butterfly.AdditionalPassiveProperties.Add("Evasion +35%");
+            butterfly.AdditionalActiveProperties.Add("Flutter");
+
+            _items.Add(butterfly);
+
+            var satanic = new Item("Satanic", LoadIcon("Satanic", IconType.Items))
+                {AttackDamageBonus = 20};
+            satanic.AdditionalPassiveProperties.Add("Lifesteal 25%");
+            satanic.AdditionalActiveProperties.Add("Unholy Rage");
+
+            _items.Add(satanic);
 
             _items.Add(new Item("Boots of Speed", LoadIcon("BootsOfSpeed", IconType.Items))
                 {MovementSpeedBonus = 45.0});
