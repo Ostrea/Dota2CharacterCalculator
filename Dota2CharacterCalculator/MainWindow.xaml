@@ -8,9 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="1000" ResizeMode="NoResize">
     <Window.Resources>
-        <DataTemplate x:Key="InventoryItemFormat">
-            <Image Source="{Binding Icon}" ToolTip="{Binding Name}" />
-        </DataTemplate>
         <system:Double x:Key="HeroBlockWidth">260</system:Double>
     </Window.Resources>
 
@@ -110,6 +107,9 @@
               Canvas.Left="655" Canvas.Top="25" x:Name="Inventory"
               DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <Grid.Resources>
+                <DataTemplate x:Key="InventoryItemFormat">
+                    <Image Source="{Binding Icon}" ToolTip="{Binding Name}" />
+                </DataTemplate>
                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</system:Double>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
