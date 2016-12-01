@@ -69,9 +69,6 @@ namespace Dota2CharacterCalculator.Models
             Armor = armor;
             Armor.SetAgilityAttribute(Attributes.Item2);
 
-//            Armor.SetHero(this);
-//            Armor.Change(Attributes.Item2.Value);
-
             BaseMs = baseMs;
             Level = level;
         }
@@ -84,7 +81,6 @@ namespace Dota2CharacterCalculator.Models
         public void IncreaseLevel()
         {
             Level++;
-//            Armor.Change(Attributes.Item2.Value);
         }
 
         public bool CanDecreaseLevel()
@@ -95,7 +91,6 @@ namespace Dota2CharacterCalculator.Models
         public void DecreaseLevel()
         {
             Level--;
-//            Armor.Change(Attributes.Item2.Value);
         }
 
         private Attribute GetPrimaryAttribute()
@@ -131,13 +126,6 @@ namespace Dota2CharacterCalculator.Models
             BaseMax = baseMax;
         }
 
-        public void Change(double attributeValue)
-        {
-            MainMin = BaseMin + (int)attributeValue;
-            MainMax = BaseMax + (int)attributeValue;
-            NotifyProperyChanged(nameof(Average));
-        }
-
         public void SetPrimaryAttribute(Attribute attribute)
         {
             attribute.PropertyChanged += OnAttributePropertyChange;
@@ -164,12 +152,6 @@ namespace Dota2CharacterCalculator.Models
         public Armor(double baseArmor, BitmapImage icon) : base(icon)
         {
             BaseArmor = baseArmor;
-        }
-
-        public void Change(double agilityValue)
-        {
-            MainArmor = BaseArmor + agilityValue / 7.0;
-            NotifyProperyChanged(nameof(MainArmor));
         }
 
         public void SetAgilityAttribute(Attribute agility)
