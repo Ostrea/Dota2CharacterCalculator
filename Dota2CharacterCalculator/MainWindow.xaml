@@ -70,7 +70,8 @@
             <Image Grid.Row="1" Grid.Column="0" Source="{Binding Damage.Icon}" Width="40"
                    ToolTip="Attack Damage" />
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Damage.Average}" Padding="15" />
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Damage.Average}" Padding="15" />
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Damage.BonusValue, StringFormat={}{0:+#;-#;+0}}"
+                       Padding="15" />
 
             <!-- Armor -->
             <Image Grid.Row="2" Grid.Column="0" Source="{Binding Armor.Icon}" Width="40"
