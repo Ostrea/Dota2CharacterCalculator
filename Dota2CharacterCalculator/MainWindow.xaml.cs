@@ -35,6 +35,9 @@ namespace Dota2CharacterCalculator
             _items.Add(new Item("Butterfly", LoadIcon("Butterfly", IconType.Items)));
             _items.Add(new Item("Satanic", LoadIcon("Satanic", IconType.Items)));
 
+            _items.Add(new Item("Boots of Speed", LoadIcon("BootsOfSpeed", IconType.Items))
+                {MovementSpeedBonus = 45.0});
+
             foreach (var child in Inventory.Children)
             {
                 var inventoryItem = child as ComboBox;
@@ -68,7 +71,6 @@ namespace Dota2CharacterCalculator
                     1,
                     AttributeType.Agility
                 );
-            morph.Items.Add(_items[0]);
 
             var invoker = new Hero
                 (
@@ -86,7 +88,6 @@ namespace Dota2CharacterCalculator
                     1,
                     AttributeType.Intelligence
                 );
-            invoker.Items.Add(_items[1]);
 
             _heroes.Add(morph);
             _heroes.Add(invoker);
