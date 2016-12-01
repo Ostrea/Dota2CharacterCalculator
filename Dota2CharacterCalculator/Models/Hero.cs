@@ -123,11 +123,19 @@ namespace Dota2CharacterCalculator.Models
             {
                 MovementSpeed.BonusValue -= previousItem.MovementSpeedBonus.Value;
             }
+            if (previousItem?.AttackDamageBonus != null)
+            {
+                Damage.BonusValue -= previousItem.AttackDamageBonus.Value;
+            }
 
             var newItem = (Item) e.NewItems[0];
             if (newItem.MovementSpeedBonus != null)
             {
                 MovementSpeed.BonusValue += newItem.MovementSpeedBonus.Value;
+            }
+            if (newItem?.AttackDamageBonus != null)
+            {
+                Damage.BonusValue += newItem.AttackDamageBonus.Value;
             }
         }
     }
@@ -142,6 +150,18 @@ namespace Dota2CharacterCalculator.Models
 
         public int Average => (MainMin + MainMax) / 2;
 
+        private int _bonusValue;
+        public int BonusValue
+        {
+            get { return _bonusValue; }
+            set
+            {
+                if (_bonusValue == value) return;
+
+                _bonusValue = value;
+                NotifyProperyChanged(nameof(BonusValue));
+            }
+        }
 
         public AttackDamage(int baseMin, int baseMax, BitmapImage icon) : base(icon)
         {
