@@ -44,7 +44,6 @@ namespace Dota2CharacterCalculator
                 if (inventoryItem == null) continue;
 
                 inventoryItem.ItemsSource = _items;
-                inventoryItem.SelectionChanged += OnInventoryItemChange;
             }
 
             var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
@@ -129,12 +128,6 @@ namespace Dota2CharacterCalculator
         {
             var selectedHero = Heroes.SelectedItem as Hero;
             selectedHero?.DecreaseLevel();
-        }
-
-        private void OnInventoryItemChange(object sender, SelectionChangedEventArgs e)
-        {
-//            MessageBox.Show((sender as ComboBox).Name);
-//            MessageBox.Show((FirstItemInInventory.SelectedItem as Item).Name);
         }
     }
 }
