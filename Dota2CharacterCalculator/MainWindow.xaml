@@ -79,9 +79,9 @@
                        Padding="15" />
 
             <!-- Movement Speed -->
-            <Image Grid.Row="3" Grid.Column="0" Source="{Binding BaseMs.Icon}" Width="40"
+            <Image Grid.Row="3" Grid.Column="0" Source="{Binding MovementSpeed.Icon}" Width="40"
                    ToolTip="Movement Speed" />
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BaseMs.Value}" Padding="15" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding MovementSpeed.TotalValue}" Padding="15" />
 
             <!-- Right panel -->
             <!-- Strength -->
