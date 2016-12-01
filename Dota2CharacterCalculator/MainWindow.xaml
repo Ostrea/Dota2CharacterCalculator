@@ -20,92 +20,112 @@
                         Executed="DecreaseHeroLevelCommand_OnExecute" />
     </Window.CommandBindings>
 
-    <Canvas>
-        <ComboBox x:Name="Heroes" HorizontalAlignment="Left" Height="30" Margin="46,22,0,0"
-                 VerticalAlignment="Top" Width="{StaticResource HeroBlockWidth}" IsSynchronizedWithCurrentItem="True">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Icon}" Width="40" />
-                        <TextBlock Text="{Binding Name}" Padding="5" />
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <!-- Stats -->
-        <Grid  Canvas.Left="46" Canvas.Top="70" Width="{StaticResource HeroBlockWidth}"
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+
+            <!-- Heroes -->
+            <ComboBox x:Name="Heroes" IsSynchronizedWithCurrentItem="True">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Icon}" Width="40" />
+                            <TextBlock Text="{Binding Name}" Padding="5" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <!-- Stats -->
+            <Grid  DataContext="{Binding SelectedItem, ElementName=Heroes}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Level -->
+                <Button Grid.Row="0" Grid.Column="0"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Command="local:Commands.DecreaseHeroLevel">
+                    <Image  Source="Assets/Stats/Minus.png" />
+                </Button>
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Level}"
+                           Padding="15" TextAlignment="Center" ToolTip="Level" />
+                <Button Grid.Row="0" Grid.Column="5"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Command="local:Commands.IncreaseHeroLevel">
+                    <Image  Source="Assets/Stats/Plus.png" />
+                </Button>
+
+                <!-- Left panel -->
+                <!-- Damage -->
+                <Image Grid.Row="1" Grid.Column="0" Source="{Binding Damage.Icon}" Width="40"
+                       ToolTip="Attack Damage" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Damage.Average}" Padding="15" />
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Damage.BonusValue, StringFormat={}{0:+#;-#;+0}}"
+                           Padding="15" />
+
+                <!-- Armor -->
+                <Image Grid.Row="2" Grid.Column="0" Source="{Binding Armor.Icon}" Width="40"
+                       ToolTip="Armor" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.MainArmor, StringFormat={}{0:f2}}"
+                           Padding="15" />
+
+                <!-- Movement Speed -->
+                <Image Grid.Row="3" Grid.Column="0" Source="{Binding MovementSpeed.Icon}" Width="40"
+                       ToolTip="Movement Speed" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding MovementSpeed.TotalValue}" Padding="15" />
+
+                <!-- Right panel -->
+                <!-- Strength -->
+                <Image Grid.Row="1" Grid.Column="3" Source="{Binding Attributes.Item1.Icon}" Width="40"
+                       ToolTip="Strength" />
+                <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Attributes.Item1.Value, StringFormat={}{0:f2}}"
+                           Padding="15" />
+
+                <!-- Agility -->
+                <Image Grid.Row="2" Grid.Column="3" Source="{Binding Attributes.Item2.Icon}" Width="40"
+                       ToolTip="Agility" />
+                <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Attributes.Item2.Value, StringFormat={}{0:f2}}"
+                           Padding="15" />
+
+                <!-- Intelligence -->
+                <Image Grid.Row="3" Grid.Column="3" Source="{Binding Attributes.Item3.Icon}" Width="40"
+                       ToolTip="Intelligence" />
+                <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Attributes.Item3.Value, StringFormat={}{0:f2}}"
+                           Padding="15" />
+            </Grid>
+        </StackPanel>
+
+        <!-- Item effects -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical"
                     DataContext="{Binding SelectedItem, ElementName=Heroes}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center">Effects</TextBlock>
+            <TextBlock TextAlignment="Center">Passive</TextBlock>
+            <TextBlock TextAlignment="Center">Active</TextBlock>
+        </StackPanel>
 
-            <!-- Level -->
-            <Button Grid.Row="0" Grid.Column="0"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                    Command="local:Commands.DecreaseHeroLevel">
-                <Image  Source="Assets/Stats/Minus.png" />
-            </Button>
-            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Level}"
-                       Padding="15" TextAlignment="Center" ToolTip="Level" />
-            <Button Grid.Row="0" Grid.Column="5"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                    Command="local:Commands.IncreaseHeroLevel">
-                <Image  Source="Assets/Stats/Plus.png" />
-            </Button>
-
-            <!-- Left panel -->
-            <!-- Damage -->
-            <Image Grid.Row="1" Grid.Column="0" Source="{Binding Damage.Icon}" Width="40"
-                   ToolTip="Attack Damage" />
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Damage.Average}" Padding="15" />
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Damage.BonusValue, StringFormat={}{0:+#;-#;+0}}"
-                       Padding="15" />
-
-            <!-- Armor -->
-            <Image Grid.Row="2" Grid.Column="0" Source="{Binding Armor.Icon}" Width="40"
-                   ToolTip="Armor" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.MainArmor, StringFormat={}{0:f2}}"
-                       Padding="15" />
-
-            <!-- Movement Speed -->
-            <Image Grid.Row="3" Grid.Column="0" Source="{Binding MovementSpeed.Icon}" Width="40"
-                   ToolTip="Movement Speed" />
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding MovementSpeed.TotalValue}" Padding="15" />
-
-            <!-- Right panel -->
-            <!-- Strength -->
-            <Image Grid.Row="1" Grid.Column="3" Source="{Binding Attributes.Item1.Icon}" Width="40"
-                   ToolTip="Strength" />
-            <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Attributes.Item1.Value, StringFormat={}{0:f2}}"
-                       Padding="15" />
-
-            <!-- Agility -->
-            <Image Grid.Row="2" Grid.Column="3" Source="{Binding Attributes.Item2.Icon}" Width="40"
-                   ToolTip="Agility" />
-            <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Attributes.Item2.Value, StringFormat={}{0:f2}}"
-                       Padding="15" />
-
-            <!-- Intelligence -->
-            <Image Grid.Row="3" Grid.Column="3" Source="{Binding Attributes.Item3.Icon}" Width="40"
-                   ToolTip="Intelligence" />
-            <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Attributes.Item3.Value, StringFormat={}{0:f2}}"
-                       Padding="15" />
-        </Grid>
-
-        <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300"
-              Canvas.Left="655" Canvas.Top="25" x:Name="Inventory"
+        <!-- Inventory -->
+        <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Height="150" x:Name="Inventory"
               DataContext="{Binding SelectedItem, ElementName=Heroes}">
             <Grid.Resources>
                 <DataTemplate x:Key="InventoryItemFormat">
@@ -113,6 +133,7 @@
                 </DataTemplate>
                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</system:Double>
             </Grid.Resources>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -148,5 +169,5 @@
                       SelectedItem="{Binding Items[5]}"
                       ToolTip="{Binding Items[5].Name}" />
         </Grid>
-    </Canvas>
+    </Grid>
 </Window>
