@@ -1,6 +1,8 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Windows;
@@ -30,11 +32,12 @@ namespace Dota2CharacterCalculator.Models
         public string Name { get; }
         public AttackDamage Damage { get; }
         public Armor Armor { get; }
-        public MovementSpeed BaseMs { get; }
+        public MovementSpeed MovementSpeed { get; }
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
         public AttributeType PrimaryAttribute { get; }
 
-        public Item[] Items { get; } = new Item[6];
+//        public Item[] Items { get; } = new Item[6];
+        public ObservableCollection<Item> Items { get; } = new ObservableCollection<Item>();
 
         private int _level;
         public int Level
@@ -50,7 +53,7 @@ namespace Dota2CharacterCalculator.Models
         }
 
         public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
-                    MovementSpeed baseMs, Tuple<Attribute, Attribute, Attribute> attributes,
+                    MovementSpeed movementSpeed, Tuple<Attribute, Attribute, Attribute> attributes,
                     int level, AttributeType primaryAttribute) : base(icon)
         {
             Name = name;
@@ -69,8 +72,14 @@ namespace Dota2CharacterCalculator.Models
             Armor = armor;
             Armor.SetAgilityAttribute(Attributes.Item2);
 
-            BaseMs = baseMs;
+            MovementSpeed = movementSpeed;
             Level = level;
+
+            for (var i = 0; i < 6; i++)
+            {
+                Items.Add(null);
+            }
+            Items.CollectionChanged += OnInventoryChange;
         }
 
         public bool CanIncreaseLevel()
@@ -106,6 +115,13 @@ namespace Dota2CharacterCalculator.Models
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void OnInventoryChange(object sender, NotifyCollectionChangedEventArgs e)
+        {
+//            MessageBox.Show(((Item) e.OldItems[0])?.Name);
+//            MessageBox.Show(e.OldStartingIndex.ToString());
+//            MessageBox.Show(sender.GetType().ToString());
         }
     }
 
@@ -172,11 +188,11 @@ namespace Dota2CharacterCalculator.Models
 
     public class MovementSpeed : BaseModel
     {
-        public double Value { get; }
+        public double BaseValue { get; }
 
-        public MovementSpeed(double value, BitmapImage icon) : base(icon)
+        public MovementSpeed(double baseValue, BitmapImage icon) : base(icon)
         {
-            Value = value;
+            BaseValue = baseValue;
         }
     }
 
