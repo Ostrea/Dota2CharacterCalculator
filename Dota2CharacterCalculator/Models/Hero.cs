@@ -137,6 +137,13 @@ namespace Dota2CharacterCalculator.Models
                     ActiveEffects.Remove(activeProperty);
                 }
             }
+            if (previousItem != null && previousItem.AdditionalPassiveProperties.Count != 0)
+            {
+                foreach (var passiveProperty in previousItem.AdditionalPassiveProperties)
+                {
+                    PassiveEffects.Remove(passiveProperty);
+                }
+            }
 
             var newItem = (Item) e.NewItems[0];
             if (newItem.MovementSpeedBonus != null)
@@ -152,6 +159,13 @@ namespace Dota2CharacterCalculator.Models
                 foreach (var activeProperty in newItem.AdditionalActiveProperties)
                 {
                     ActiveEffects.Add(activeProperty);
+                }
+            }
+            if (newItem.AdditionalPassiveProperties.Count != 0)
+            {
+                foreach (var passiveProperty in newItem.AdditionalPassiveProperties)
+                {
+                    PassiveEffects.Add(passiveProperty);
                 }
             }
         }
