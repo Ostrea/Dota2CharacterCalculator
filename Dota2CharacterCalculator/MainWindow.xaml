@@ -110,12 +110,16 @@
                        ToolTip="Agility" />
                 <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Attributes.Item2.Value, StringFormat={}{0:f2}}"
                            Padding="15" x:Name="AgilityAttribute" />
+                <TextBlock Grid.Row="2" Grid.Column="5" Text="{Binding Attributes.Item2.BonusValue,
+                           StringFormat={}{0:+#;-#;+0}}" Padding="15" />
 
                 <!-- Intelligence -->
                 <Image Grid.Row="3" Grid.Column="3" Source="{Binding Attributes.Item3.Icon}" Width="40"
                        ToolTip="Intelligence" />
                 <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Attributes.Item3.Value, StringFormat={}{0:f2}}"
                            Padding="15" x:Name="IntelligenceAttribute" />
+                <TextBlock Grid.Row="3" Grid.Column="5" Text="{Binding Attributes.Item3.BonusValue,
+                           StringFormat={}{0:+#;-#;+0}}" Padding="15" />
             </Grid>
         </StackPanel>
 
