@@ -12,6 +12,7 @@ namespace Dota2CharacterCalculator.Models
         public double? StrengthBonus { get; set; }
         public double? AgilityBonus { get; set; }
         public double? IntelligenceBonus { get; set; }
+        public double? ArmorBonus { get; set; }
         public List<string> AdditionalActiveProperties { get; set; } = new List<string>();
         public List<string> AdditionalPassiveProperties { get; set; } = new List<string>();
 

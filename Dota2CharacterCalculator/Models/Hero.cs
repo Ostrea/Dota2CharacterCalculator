@@ -156,6 +156,10 @@ namespace Dota2CharacterCalculator.Models
             {
                 Attributes.Item3.BonusValue -= previousItem.IntelligenceBonus.Value;
             }
+            if (previousItem?.ArmorBonus != null)
+            {
+                Armor.BonusArmor -= previousItem.ArmorBonus.Value;
+            }
 
             var newItem = (Item) e.NewItems[0];
             if (newItem.MovementSpeedBonus != null)
@@ -191,6 +195,10 @@ namespace Dota2CharacterCalculator.Models
             if (newItem.IntelligenceBonus != null)
             {
                 Attributes.Item3.BonusValue += newItem.IntelligenceBonus.Value;
+            }
+            if (newItem.ArmorBonus != null)
+            {
+                Armor.BonusArmor += newItem.ArmorBonus.Value;
             }
         }
     }
