@@ -215,9 +215,9 @@ namespace Dota2CharacterCalculator.Models
 
         private void OnAttributePropertyChange(object sender, PropertyChangedEventArgs args)
         {
-            if (args.PropertyName != nameof(Attribute.Value)) return;
+            if (args.PropertyName != nameof(Attribute.TotalValue)) return;
 
-            var attributeValue = ((Attribute) sender).Value;
+            var attributeValue = ((Attribute) sender).TotalValue;
 
             MainMin = BaseMin + (int)attributeValue;
             MainMax = BaseMax + (int)attributeValue;
@@ -293,8 +293,11 @@ namespace Dota2CharacterCalculator.Models
 
                 _bonusValue = value;
                 NotifyProperyChanged(nameof(BonusValue));
+                NotifyProperyChanged(nameof(TotalValue));
             }
         }
+
+        public double TotalValue => Value + BonusValue;
 
         private readonly double _startingValue;
 
@@ -324,6 +327,7 @@ namespace Dota2CharacterCalculator.Models
             }
 
             NotifyProperyChanged(nameof(Value));
+            NotifyProperyChanged(nameof(TotalValue));
         }
     }
 
