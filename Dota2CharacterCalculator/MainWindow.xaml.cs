@@ -41,7 +41,7 @@ namespace Dota2CharacterCalculator
             _items.Add(butterfly);
 
             var satanic = new Item("Satanic", LoadIcon("Satanic", IconType.Items))
-                {AttackDamageBonus = 20, StrengthBonus = 25};
+                {AttackDamageBonus = 20, StrengthBonus = 25, ArmorBonus = 5};
             satanic.AdditionalPassiveProperties.Add("Lifesteal 25%");
             satanic.AdditionalActiveProperties.Add("Unholy Rage");
 
