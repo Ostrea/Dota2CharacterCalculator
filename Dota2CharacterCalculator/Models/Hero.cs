@@ -144,6 +144,10 @@ namespace Dota2CharacterCalculator.Models
                     PassiveEffects.Remove(passiveProperty);
                 }
             }
+            if (previousItem?.StrengthBonus != null)
+            {
+                Attributes.Item1.BonusValue -= previousItem.StrengthBonus.Value;
+            }
 
             var newItem = (Item) e.NewItems[0];
             if (newItem.MovementSpeedBonus != null)
@@ -167,6 +171,10 @@ namespace Dota2CharacterCalculator.Models
                 {
                     PassiveEffects.Add(passiveProperty);
                 }
+            }
+            if (newItem?.StrengthBonus != null)
+            {
+                Attributes.Item1.BonusValue += newItem.StrengthBonus.Value;
             }
         }
     }
@@ -274,6 +282,19 @@ namespace Dota2CharacterCalculator.Models
         public AttributeType Type { get; }
         public double Value { get; private set; }
         public double Growth { get; }
+
+        private double _bonusValue;
+        public double BonusValue
+        {
+            get { return _bonusValue; }
+            set
+            {
+                if (Math.Abs(_bonusValue - value) < 1e-5) return;
+
+                _bonusValue = value;
+                NotifyProperyChanged(nameof(BonusValue));
+            }
+        }
 
         private readonly double _startingValue;
 

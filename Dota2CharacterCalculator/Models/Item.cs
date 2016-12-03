@@ -9,6 +9,9 @@ namespace Dota2CharacterCalculator.Models
         public BitmapImage Icon { get; }
         public double? MovementSpeedBonus { get; set; }
         public int? AttackDamageBonus { get; set; }
+        public double? StrengthBonus { get; set; }
+        public double? AgilityBonus { get; set; }
+        public double? IntelligenceBonus { get; set; }
         public List<string> AdditionalActiveProperties { get; set; } = new List<string>();
         public List<string> AdditionalPassiveProperties { get; set; } = new List<string>();
 

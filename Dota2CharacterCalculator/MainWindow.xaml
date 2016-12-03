@@ -101,6 +101,8 @@
                        ToolTip="Strength" />
                 <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Attributes.Item1.Value, StringFormat={}{0:f2}}"
                            Padding="15" />
+                <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding Attributes.Item1.BonusValue,
+                           StringFormat={}{0:+#;-#;+0}}" Padding="15" />
 
                 <!-- Agility -->
                 <Image Grid.Row="2" Grid.Column="3" Source="{Binding Attributes.Item2.Icon}" Width="40"
