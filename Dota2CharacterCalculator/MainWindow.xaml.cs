@@ -94,7 +94,8 @@ namespace Dota2CharacterCalculator
                         new Attribute(AttributeType.Intelligence, 17.0, 1.1, intelligenceIcon)
                     ),
                     1,
-                    AttributeType.Agility
+                    AttributeType.Agility,
+                    new Health(null)
                 );
 
             var invoker = new Hero
@@ -111,7 +112,8 @@ namespace Dota2CharacterCalculator
                         new Attribute(AttributeType.Intelligence, 16.0, 4.0, intelligenceIcon)
                     ),
                     1,
-                    AttributeType.Intelligence
+                    AttributeType.Intelligence,
+                    new Health(null)
                 );
 
             var omniknight = new Hero
@@ -128,7 +130,8 @@ namespace Dota2CharacterCalculator
                     new Attribute(AttributeType.Intelligence, 17.0, 1.8, intelligenceIcon)
                 ),
                 1,
-                AttributeType.Strength
+                AttributeType.Strength,
+                new Health(null)
             );
 
             _heroes.Add(morph);
