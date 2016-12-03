@@ -35,6 +35,7 @@ namespace Dota2CharacterCalculator.Models
         public MovementSpeed MovementSpeed { get; }
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
         public AttributeType PrimaryAttribute { get; }
+        public Health Health { get; }
 
         public ObservableCollection<Item> Items { get; } = new ObservableCollection<Item>();
 
@@ -56,7 +57,7 @@ namespace Dota2CharacterCalculator.Models
 
         public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
                     MovementSpeed movementSpeed, Tuple<Attribute, Attribute, Attribute> attributes,
-                    int level, AttributeType primaryAttribute) : base(icon)
+                    int level, AttributeType primaryAttribute, Health health) : base(icon)
         {
             Name = name;
 
@@ -73,6 +74,9 @@ namespace Dota2CharacterCalculator.Models
 
             Armor = armor;
             Armor.SetAgilityAttribute(Attributes.Item2);
+
+            Health = health;
+            Health.SetStrengthAttribute(Attributes.Item1);
 
             MovementSpeed = movementSpeed;
             Level = level;
@@ -373,5 +377,31 @@ namespace Dota2CharacterCalculator.Models
         Strength,
         Agility,
         Intelligence
+    }
+
+    public class Health : BaseModel
+    {
+        private const int BaseHp = 200;
+
+        public int MaxHp { get; private set; }
+
+        public Health(BitmapImage icon) : base(icon)
+        {
+        }
+
+        public void SetStrengthAttribute(Attribute strength)
+        {
+            strength.PropertyChanged += OnTotalStrengthChange;
+        }
+
+        private void OnTotalStrengthChange(object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName != nameof(Attribute.TotalValue)) return;
+
+            var strengthValue = (int) ((Attribute) sender).TotalValue;
+
+            MaxHp = BaseHp + 20 * strengthValue;
+            NotifyProperyChanged(nameof(MaxHp));
+        }
     }
 }
