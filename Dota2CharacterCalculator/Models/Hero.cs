@@ -247,6 +247,19 @@ namespace Dota2CharacterCalculator.Models
 
         public double MainArmor { get; private set; }
 
+        private double _bonusArmor;
+        public double BonusArmor
+        {
+            get { return _bonusArmor; }
+            set
+            {
+                if (Math.Abs(_bonusArmor - value) < 1e-5) return;
+
+                _bonusArmor = value;
+                NotifyProperyChanged(nameof(BonusArmor));
+            }
+        }
+
         public Armor(double baseArmor, BitmapImage icon) : base(icon)
         {
             BaseArmor = baseArmor;

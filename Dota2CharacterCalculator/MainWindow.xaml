@@ -90,6 +90,8 @@
                        ToolTip="Armor" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Armor.MainArmor, StringFormat={}{0:f2}}"
                            Padding="15" />
+                <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Armor.BonusArmor, StringFormat={}{0:+#;-#;+0}}"
+                           Padding="15" />
 
                 <!-- Movement Speed -->
                 <Image Grid.Row="3" Grid.Column="0" Source="{Binding MovementSpeed.Icon}" Width="40"
