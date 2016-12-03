@@ -36,6 +36,7 @@ namespace Dota2CharacterCalculator.Models
         public Tuple<Attribute, Attribute, Attribute> Attributes { get; }
         public AttributeType PrimaryAttribute { get; }
         public Health Health { get; }
+        public Mana Mana { get; }
 
         public ObservableCollection<Item> Items { get; } = new ObservableCollection<Item>();
 
@@ -57,7 +58,7 @@ namespace Dota2CharacterCalculator.Models
 
         public Hero(string name, BitmapImage icon, AttackDamage damage, Armor armor,
                     MovementSpeed movementSpeed, Tuple<Attribute, Attribute, Attribute> attributes,
-                    int level, AttributeType primaryAttribute, Health health) : base(icon)
+                    int level, AttributeType primaryAttribute, Health health, Mana mana) : base(icon)
         {
             Name = name;
 
@@ -77,6 +78,9 @@ namespace Dota2CharacterCalculator.Models
 
             Health = health;
             Health.SetStrengthAttribute(Attributes.Item1);
+
+            Mana = mana;
+            Mana.SetIntelligenceAttribute(Attributes.Item3);
 
             MovementSpeed = movementSpeed;
             Level = level;
@@ -402,6 +406,32 @@ namespace Dota2CharacterCalculator.Models
 
             MaxHp = BaseHp + 20 * strengthValue;
             NotifyProperyChanged(nameof(MaxHp));
+        }
+    }
+
+    public class Mana : BaseModel
+    {
+        private const int BaseMp = 50;
+
+        public int MaxMp { get; private set; }
+
+        public Mana(BitmapImage icon) : base(icon)
+        {
+        }
+
+        public void SetIntelligenceAttribute(Attribute intelligence)
+        {
+            intelligence.PropertyChanged += OnTotalIntelligenceChange;
+        }
+
+        private void OnTotalIntelligenceChange(object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName != nameof(Attribute.TotalValue)) return;
+
+            var intelligenceValue = (int) ((Attribute) sender).TotalValue;
+
+            MaxMp = BaseMp + 12 * intelligenceValue;
+            NotifyProperyChanged(nameof(MaxMp));
         }
     }
 }
