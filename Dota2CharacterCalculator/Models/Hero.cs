@@ -259,9 +259,9 @@ namespace Dota2CharacterCalculator.Models
 
         private void OnAgilityPropertyChange(object sender, PropertyChangedEventArgs args)
         {
-            if (args.PropertyName != nameof(Attribute.Value)) return;
+            if (args.PropertyName != nameof(Attribute.TotalValue)) return;
 
-            var agilityValue = ((Attribute) sender).Value;
+            var agilityValue = ((Attribute) sender).TotalValue;
 
             MainArmor = BaseArmor + agilityValue / 7.0;
             NotifyProperyChanged(nameof(MainArmor));
