@@ -34,7 +34,8 @@
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
 
             <!-- Heroes -->
-            <ComboBox x:Name="Heroes" IsSynchronizedWithCurrentItem="True">
+            <ComboBox x:Name="Heroes" IsSynchronizedWithCurrentItem="True"
+                      SelectionChanged="Heroes_OnSelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -100,7 +101,7 @@
                 <Image Grid.Row="1" Grid.Column="3" Source="{Binding Attributes.Item1.Icon}" Width="40"
                        ToolTip="Strength" />
                 <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Attributes.Item1.Value, StringFormat={}{0:f2}}"
-                           Padding="15" />
+                           Padding="15" x:Name="StrengthAttribute" />
                 <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding Attributes.Item1.BonusValue,
                            StringFormat={}{0:+#;-#;+0}}" Padding="15" />
 
@@ -108,13 +109,13 @@
                 <Image Grid.Row="2" Grid.Column="3" Source="{Binding Attributes.Item2.Icon}" Width="40"
                        ToolTip="Agility" />
                 <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Attributes.Item2.Value, StringFormat={}{0:f2}}"
-                           Padding="15" />
+                           Padding="15" x:Name="AgilityAttribute" />
 
                 <!-- Intelligence -->
                 <Image Grid.Row="3" Grid.Column="3" Source="{Binding Attributes.Item3.Icon}" Width="40"
                        ToolTip="Intelligence" />
                 <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Attributes.Item3.Value, StringFormat={}{0:f2}}"
-                           Padding="15" />
+                           Padding="15" x:Name="IntelligenceAttribute" />
             </Grid>
         </StackPanel>
 

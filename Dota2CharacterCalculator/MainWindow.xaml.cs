@@ -167,5 +167,27 @@ namespace Dota2CharacterCalculator
             var selectedHero = Heroes.SelectedItem as Hero;
             selectedHero?.DecreaseLevel();
         }
+
+        private void Heroes_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            StrengthAttribute.Foreground = AgilityAttribute.Foreground
+                = IntelligenceAttribute.Foreground = Brushes.Black;
+
+            var selectedHero = (Hero) Heroes.SelectedItem;
+            switch (selectedHero.PrimaryAttribute)
+            {
+                case AttributeType.Strength:
+                    StrengthAttribute.Foreground = Brushes.Red;
+                    break;
+                case AttributeType.Agility:
+                    AgilityAttribute.Foreground = Brushes.Green;
+                    break;
+                case AttributeType.Intelligence:
+                    IntelligenceAttribute.Foreground = Brushes.Blue;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
