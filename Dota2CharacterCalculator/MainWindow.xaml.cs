@@ -108,8 +108,26 @@ namespace Dota2CharacterCalculator
                     AttributeType.Intelligence
                 );
 
+            var omniknight = new Hero
+            (
+                "Omniknight",
+                LoadIcon("Omniknight", IconType.Heroes),
+                new AttackDamage(31, 41, attackDamageIcon),
+                new Armor(3.0, armorIcon),
+                new MovementSpeed(305.0, msIcon),
+                new Tuple<Attribute, Attribute, Attribute>
+                (
+                    new Attribute(AttributeType.Strength, 22.0, 2.8, strengthIcon),
+                    new Attribute(AttributeType.Agility, 15.0, 1.75, agilityIcon),
+                    new Attribute(AttributeType.Intelligence, 17.0, 1.8, intelligenceIcon)
+                ),
+                1,
+                AttributeType.Strength
+            );
+
             _heroes.Add(morph);
             _heroes.Add(invoker);
+            _heroes.Add(omniknight);
 
             Heroes.ItemsSource = _heroes;
         }

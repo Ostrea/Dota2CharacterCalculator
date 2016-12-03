@@ -106,6 +106,7 @@
     <Resource Include="Assets\Items\PhaseBoots.png" />
     <Resource Include="Assets\Heroes\Morphling.png" />
     <Resource Include="Assets\Heroes\Invoker.png" />
+    <Resource Include="Assets\Heroes\Omniknight.png" />
     <Resource Include="Assets\Stats\AttackDamage.png" />
     <Resource Include="Assets\Stats\Armor.png" />
     <Resource Include="Assets\Stats\MovementSpeed.png" />
