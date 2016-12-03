@@ -172,7 +172,7 @@ namespace Dota2CharacterCalculator.Models
                     PassiveEffects.Add(passiveProperty);
                 }
             }
-            if (newItem?.StrengthBonus != null)
+            if (newItem.StrengthBonus != null)
             {
                 Attributes.Item1.BonusValue += newItem.StrengthBonus.Value;
             }
