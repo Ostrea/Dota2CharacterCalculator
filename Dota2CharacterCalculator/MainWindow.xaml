@@ -124,9 +124,10 @@
                 <TextBlock Grid.Row="3" Grid.Column="5" Text="{Binding Attributes.Item3.BonusValue,
                            StringFormat={}{0:+#;-#;+0}}" Padding="15" />
 
-                <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="Health: "
-                           Padding="15" />
-                <TextBlock Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3"
+                <!-- Health -->
+                <Image Grid.Row="4" Grid.Column="1" Source="{Binding Health.Icon}" Width="40"
+                       ToolTip="Max Health" />
+                <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                            Text="{Binding Health.MaxHp}" Padding="15" />
             </Grid>
         </StackPanel>
