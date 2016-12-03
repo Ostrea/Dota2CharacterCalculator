@@ -75,6 +75,7 @@ namespace Dota2CharacterCalculator
             var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
             var armorIcon = LoadIcon("Armor", IconType.Stats);
             var msIcon = LoadIcon("MovementSpeed", IconType.Stats);
+            var healthIcon = LoadIcon("Health", IconType.Stats);
 
             var strengthIcon = LoadIcon("Strength", IconType.Stats);
             var agilityIcon = LoadIcon("Agility", IconType.Stats);
@@ -95,7 +96,7 @@ namespace Dota2CharacterCalculator
                     ),
                     1,
                     AttributeType.Agility,
-                    new Health(null)
+                    new Health(healthIcon)
                 );
 
             var invoker = new Hero
@@ -113,7 +114,7 @@ namespace Dota2CharacterCalculator
                     ),
                     1,
                     AttributeType.Intelligence,
-                    new Health(null)
+                    new Health(healthIcon)
                 );
 
             var omniknight = new Hero
