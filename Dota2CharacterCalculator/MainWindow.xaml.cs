@@ -76,6 +76,7 @@ namespace Dota2CharacterCalculator
             var armorIcon = LoadIcon("Armor", IconType.Stats);
             var msIcon = LoadIcon("MovementSpeed", IconType.Stats);
             var healthIcon = LoadIcon("Health", IconType.Stats);
+            var manaIcon = LoadIcon("Mana", IconType.Stats);
 
             var strengthIcon = LoadIcon("Strength", IconType.Stats);
             var agilityIcon = LoadIcon("Agility", IconType.Stats);
@@ -96,7 +97,8 @@ namespace Dota2CharacterCalculator
                     ),
                     1,
                     AttributeType.Agility,
-                    new Health(healthIcon)
+                    new Health(healthIcon),
+                    new Mana(manaIcon)
                 );
 
             var invoker = new Hero
@@ -114,7 +116,8 @@ namespace Dota2CharacterCalculator
                     ),
                     1,
                     AttributeType.Intelligence,
-                    new Health(healthIcon)
+                    new Health(healthIcon),
+                    new Mana(manaIcon)
                 );
 
             var omniknight = new Hero
@@ -132,7 +135,8 @@ namespace Dota2CharacterCalculator
                 ),
                 1,
                 AttributeType.Strength,
-                new Health(null)
+                new Health(healthIcon),
+                new Mana(manaIcon)
             );
 
             _heroes.Add(morph);
