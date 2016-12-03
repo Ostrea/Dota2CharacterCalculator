@@ -125,10 +125,12 @@
                            StringFormat={}{0:+#;-#;+0}}" Padding="15" />
 
                 <!-- Health -->
-                <Image Grid.Row="4" Grid.Column="1" Source="{Binding Health.Icon}" Width="40"
-                       ToolTip="Max Health" />
-                <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                           Text="{Binding Health.MaxHp}" Padding="15" />
+                <Image Grid.Row="4" Grid.Column="0" Source="{Binding Health.Icon}" Width="40" ToolTip="Max Health" />
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Health.MaxHp}" Padding="15" />
+
+                <!-- Mana -->
+                <Image Grid.Row="4" Grid.Column="3" Source="{Binding Mana.Icon}" Width="40" ToolTip="Max Mana" />
+                <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Mana.MaxMp}" Padding="15" />
             </Grid>
         </StackPanel>
 
