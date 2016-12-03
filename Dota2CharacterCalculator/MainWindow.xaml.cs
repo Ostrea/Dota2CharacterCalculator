@@ -33,7 +33,7 @@ namespace Dota2CharacterCalculator
             DataContext = this;
 
             var butterfly = new Item("Butterfly", LoadIcon("Butterfly", IconType.Items))
-                {AttackDamageBonus = 30};
+                {AttackDamageBonus = 30, AgilityBonus = 35};
             butterfly.AdditionalPassiveProperties.Add("Attack speed +30");
             butterfly.AdditionalPassiveProperties.Add("Evasion +35%");
             butterfly.AdditionalActiveProperties.Add("Flutter");

@@ -148,6 +148,10 @@ namespace Dota2CharacterCalculator.Models
             {
                 Attributes.Item1.BonusValue -= previousItem.StrengthBonus.Value;
             }
+            if (previousItem?.AgilityBonus != null)
+            {
+                Attributes.Item2.BonusValue -= previousItem.AgilityBonus.Value;
+            }
 
             var newItem = (Item) e.NewItems[0];
             if (newItem.MovementSpeedBonus != null)
@@ -175,6 +179,10 @@ namespace Dota2CharacterCalculator.Models
             if (newItem.StrengthBonus != null)
             {
                 Attributes.Item1.BonusValue += newItem.StrengthBonus.Value;
+            }
+            if (newItem.AgilityBonus != null)
+            {
+                Attributes.Item2.BonusValue += newItem.AgilityBonus.Value;
             }
         }
     }
