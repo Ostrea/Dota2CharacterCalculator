@@ -56,6 +56,9 @@ namespace Dota2CharacterCalculator
             _items.Add(new Item("Staff of Wizardry", LoadIcon("StaffOfWizardry", IconType.Items))
                 {IntelligenceBonus = 10});
 
+            _items.Add(new Item("Platemail", LoadIcon("Platemail", IconType.Items))
+                {ArmorBonus = 10});
+
             var phaseBoots = new Item("Phase Boots", LoadIcon("PhaseBoots", IconType.Items))
             {MovementSpeedBonus = 45, AttackDamageBonus = 24};
             phaseBoots.AdditionalActiveProperties.Add("Phase");

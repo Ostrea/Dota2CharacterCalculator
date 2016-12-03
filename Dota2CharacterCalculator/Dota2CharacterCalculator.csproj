@@ -105,6 +105,7 @@
     <Resource Include="Assets\Items\BladesOfAttack.png" />
     <Resource Include="Assets\Items\PhaseBoots.png" />
     <Resource Include="Assets\Items\StaffOfWizardry.png" />
+    <Resource Include="Assets\Items\Platemail.png" />
     <Resource Include="Assets\Heroes\Morphling.png" />
     <Resource Include="Assets\Heroes\Invoker.png" />
     <Resource Include="Assets\Heroes\Omniknight.png" />
