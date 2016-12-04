@@ -70,8 +70,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Hero.cs" />
-    <Compile Include="Models\Item.cs" />
+    <Compile Include="ViewModels\Hero.cs" />
+    <Compile Include="ViewModels\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

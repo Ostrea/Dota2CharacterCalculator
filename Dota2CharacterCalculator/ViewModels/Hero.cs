@@ -1,14 +1,10 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace Dota2CharacterCalculator.Models
+namespace Dota2CharacterCalculator.ViewModels
 {
     public abstract class BaseModel : INotifyPropertyChanged
     {

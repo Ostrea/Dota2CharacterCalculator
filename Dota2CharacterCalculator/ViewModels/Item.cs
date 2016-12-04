@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media.Imaging;
 
-namespace Dota2CharacterCalculator.Models
+namespace Dota2CharacterCalculator.ViewModels
 {
     public class Item
     {

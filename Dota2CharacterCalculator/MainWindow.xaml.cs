@@ -14,8 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Dota2CharacterCalculator.Models;
-using Attribute = Dota2CharacterCalculator.Models.Attribute;
+using Dota2CharacterCalculator.ViewModels;
+using Attribute = Dota2CharacterCalculator.ViewModels.Attribute;
 
 namespace Dota2CharacterCalculator
 {
