@@ -4,3 +4,4 @@ obj/
 .vs/
 Assets/
 *.tmp_proj
+packages/
