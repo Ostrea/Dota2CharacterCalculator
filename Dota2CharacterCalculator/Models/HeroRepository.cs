@@ -23,15 +23,15 @@ namespace Dota2CharacterCalculator.Models
 
         public IEnumerable<ViewModels.Hero> GetHeroes()
         {
-            var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
-            var armorIcon = LoadIcon("Armor", IconType.Stats);
-            var msIcon = LoadIcon("MovementSpeed", IconType.Stats);
-            var healthIcon = LoadIcon("Health", IconType.Stats);
-            var manaIcon = LoadIcon("Mana", IconType.Stats);
+            var attackDamageIcon = LoadStatsIcon("AttackDamage");
+            var armorIcon = LoadStatsIcon("Armor");
+            var msIcon = LoadStatsIcon("MovementSpeed");
+            var healthIcon = LoadStatsIcon("Health");
+            var manaIcon = LoadStatsIcon("Mana");
 
-            var strengthIcon = LoadIcon("Strength", IconType.Stats);
-            var agilityIcon = LoadIcon("Agility", IconType.Stats);
-            var intelligenceIcon = LoadIcon("Intelligence", IconType.Stats);
+            var strengthIcon = LoadStatsIcon("Strength");
+            var agilityIcon = LoadStatsIcon("Agility");
+            var intelligenceIcon = LoadStatsIcon("Intelligence");
 
             var heroes = new List<ViewModels.Hero>();
 
@@ -87,16 +87,9 @@ namespace Dota2CharacterCalculator.Models
             return heroes;
         }
 
-        private static BitmapImage LoadIcon(string iconName, IconType iconType)
+        private static BitmapImage LoadStatsIcon(string iconName)
         {
-            return new BitmapImage(new Uri($"Assets/{iconType}/{iconName}.png", UriKind.Relative));
-        }
-
-        private enum IconType
-        {
-            Heroes,
-            Stats,
-            Items,
+            return new BitmapImage(new Uri($"Assets/Stats/{iconName}.png", UriKind.Relative));
         }
 
         private static BitmapImage ToImage(byte[] imageBytes)
