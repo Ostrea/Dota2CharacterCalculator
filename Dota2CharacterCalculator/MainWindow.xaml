@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Dota2CharacterCalculator"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="1000" ResizeMode="NoResize">
+        Title="MainWindow" Height="300" Width="1000" ResizeMode="NoResize"
+        Loaded="Window_OnLoad">
     <Window.Resources>
         <system:Double x:Key="HeroBlockWidth">260</system:Double>
     </Window.Resources>

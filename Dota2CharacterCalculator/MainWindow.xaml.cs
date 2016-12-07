@@ -14,8 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Dota2CharacterCalculator.Models;
 using Dota2CharacterCalculator.ViewModels;
 using Attribute = Dota2CharacterCalculator.ViewModels.Attribute;
+using Hero = Dota2CharacterCalculator.ViewModels.Hero;
 
 namespace Dota2CharacterCalculator
 {
@@ -144,6 +146,12 @@ namespace Dota2CharacterCalculator
             _heroes.Add(omniknight);
 
             Heroes.ItemsSource = _heroes;
+        }
+
+        private void Window_OnLoad(object sender, RoutedEventArgs e)
+        {
+
+
         }
 
         private enum IconType
