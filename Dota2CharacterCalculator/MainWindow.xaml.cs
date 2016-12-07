@@ -76,12 +76,6 @@ namespace Dota2CharacterCalculator
             Heroes.ItemsSource = _heroes;
         }
 
-        private void Window_OnLoad(object sender, RoutedEventArgs e)
-        {
-//            var downloadService = new DownloadService();
-//            downloadService.DownloadHeroes();
-        }
-
         private static BitmapImage LoadItemIcon(string iconName)
         {
             return new BitmapImage(new Uri($"Assets/Items/{iconName}.png", UriKind.Relative));
