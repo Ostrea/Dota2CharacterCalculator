@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Dota2CharacterCalculator.Models;
+using Dota2CharacterCalculator.Services;
 using Dota2CharacterCalculator.ViewModels;
 using Hero = Dota2CharacterCalculator.ViewModels.Hero;
 
@@ -17,6 +19,9 @@ namespace Dota2CharacterCalculator
     public partial class MainWindow : Window
     {
         private readonly ObservableCollection<Item> _items = new ObservableCollection<Item>();
+        private readonly ObservableCollection<Hero> _heroes = new ObservableCollection<Hero>();
+
+        private readonly HeroRepository _heroRepository = new HeroRepository();
 
         public MainWindow()
         {
@@ -63,8 +68,12 @@ namespace Dota2CharacterCalculator
                 inventoryItem.ItemsSource = _items;
             }
 
-            var heroRepository = new HeroRepository();
-            Heroes.ItemsSource = heroRepository.GetHeroes();
+            foreach (var hero in _heroRepository.GetHeroes())
+            {
+                _heroes.Add(hero);
+            }
+
+            Heroes.ItemsSource = _heroes;
         }
 
         private void Window_OnLoad(object sender, RoutedEventArgs e)
@@ -102,12 +111,46 @@ namespace Dota2CharacterCalculator
             selectedHero?.DecreaseLevel();
         }
 
+        private void DownloadHeroDataCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (var _ = client.OpenRead("http://www.google.com"))
+                {
+                    e.CanExecute = true;
+                }
+            }
+            catch
+            {
+                e.CanExecute = false;
+            }
+        }
+
+        private void DownloadHeroDataCommand_OnExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var downloadService = new DownloadService();
+            downloadService.DownloadHeroes();
+
+            for (var i = _heroes.Count - 1; i >= 0; i--)
+            {
+                _heroes.RemoveAt(i);
+            }
+
+            foreach (var hero in _heroRepository.GetHeroes())
+            {
+                _heroes.Add(hero);
+            }
+        }
+
         private void Heroes_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             StrengthAttribute.Foreground = AgilityAttribute.Foreground
                 = IntelligenceAttribute.Foreground = Brushes.Black;
 
             var selectedHero = (Hero) Heroes.SelectedItem;
+            if (selectedHero == null) return;
+
             switch (selectedHero.PrimaryAttribute)
             {
                 case AttributeType.Strength:

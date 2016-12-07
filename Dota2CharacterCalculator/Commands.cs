@@ -16,5 +16,12 @@ namespace Dota2CharacterCalculator
                "Decrease hero level",
                typeof(Commands)
            );
+
+       public static readonly RoutedUICommand DownloadHeroData = new RoutedUICommand
+           (
+               "Download hero data",
+               "Download hero data",
+               typeof(Commands)
+           );
     }
 }

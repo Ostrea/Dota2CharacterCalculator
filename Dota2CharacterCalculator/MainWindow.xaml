@@ -19,6 +19,9 @@
         <CommandBinding Command="local:Commands.DecreaseHeroLevel"
                         CanExecute="DecreaseHeroLevelCommand_CanExecute"
                         Executed="DecreaseHeroLevelCommand_OnExecute" />
+        <CommandBinding Command="local:Commands.DownloadHeroData"
+                        CanExecute="DownloadHeroDataCommand_CanExecute"
+                        Executed="DownloadHeroDataCommand_OnExecute" />
     </Window.CommandBindings>
 
     <Grid>
@@ -164,50 +167,67 @@
         </StackPanel>
 
         <!-- Inventory -->
-        <TextBlock Grid.Row="0" Grid.Column="2" TextAlignment="Center">Inventory</TextBlock>
-        <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Height="150" x:Name="Inventory"
-              DataContext="{Binding SelectedItem, ElementName=Heroes}">
-            <Grid.Resources>
-                <DataTemplate x:Key="InventoryItemFormat">
-                    <Image Source="{Binding Icon}" ToolTip="{Binding Name}" />
-                </DataTemplate>
-                <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</system:Double>
-            </Grid.Resources>
-
+        <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ComboBox Grid.Row="0" Grid.Column="0" x:Name="FirstItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[0]}"
-                      ToolTip="{Binding Items[0].Name}" />
-            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="SecondItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[1]}"
-                      ToolTip="{Binding Items[1].Name}" />
-            <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ThirdItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[2]}"
-                      ToolTip="{Binding Items[2].Name}" />
-            <ComboBox Grid.Row="1" Grid.Column="0" x:Name="FourthItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[3]}"
-                      ToolTip="{Binding Items[3].Name}" />
-            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FifthItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[4]}"
-                      ToolTip="{Binding Items[4].Name}" />
-            <ComboBox Grid.Row="1" Grid.Column="2" x:Name="SixthItemInInventory"
-                      ItemTemplate="{StaticResource InventoryItemFormat}"
-                      SelectedItem="{Binding Items[5]}"
-                      ToolTip="{Binding Items[5].Name}" />
+            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center">Inventory</TextBlock>
+
+            <Grid Grid.Row="1" Grid.Column="0" Height="150" x:Name="Inventory"
+                  DataContext="{Binding SelectedItem, ElementName=Heroes}">
+                <Grid.Resources>
+                    <DataTemplate x:Key="InventoryItemFormat">
+                        <Image Source="{Binding Icon}" ToolTip="{Binding Name}" />
+                    </DataTemplate>
+                    <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</system:Double>
+                </Grid.Resources>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ComboBox Grid.Row="0" Grid.Column="0" x:Name="FirstItemInInventory"
+                          ItemTemplate="{StaticResource InventoryItemFormat}"
+                          SelectedItem="{Binding Items[0]}"
+                          ToolTip="{Binding Items[0].Name}" />
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="SecondItemInInventory"
+                          ItemTemplate="{StaticResource InventoryItemFormat}"
+                          SelectedItem="{Binding Items[1]}"
+                          ToolTip="{Binding Items[1].Name}" />
+                <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ThirdItemInInventory"
+                          ItemTemplate="{StaticResource InventoryItemFormat}"
+                          SelectedItem="{Binding Items[2]}"
+                          ToolTip="{Binding Items[2].Name}" />
+                <ComboBox Grid.Row="1" Grid.Column="0" x:Name="FourthItemInInventory"
+                          ItemTemplate="{StaticResource InventoryItemFormat}"
+                          SelectedItem="{Binding Items[3]}"
+                          ToolTip="{Binding Items[3].Name}" />
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FifthItemInInventory"
+                          ItemTemplate="{StaticResource InventoryItemFormat}"
+                          SelectedItem="{Binding Items[4]}"
+                          ToolTip="{Binding Items[4].Name}" />
+                <ComboBox Grid.Row="1" Grid.Column="2" x:Name="SixthItemInInventory"
+                          ItemTemplate="{StaticResource InventoryItemFormat}"
+                          SelectedItem="{Binding Items[5]}"
+                          ToolTip="{Binding Items[5].Name}" />
+            </Grid>
+
+            <Button Grid.Row="2" Grid.Column="0"
+                    Command="local:Commands.DownloadHeroData">
+                Download hero data
+            </Button>
         </Grid>
     </Grid>
 </Window>
