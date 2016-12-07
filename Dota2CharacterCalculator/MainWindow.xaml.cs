@@ -23,7 +23,7 @@ namespace Dota2CharacterCalculator
             InitializeComponent();
             DataContext = this;
 
-            var butterfly = new Item("Butterfly", LoadIcon("Butterfly", IconType.Items))
+            var butterfly = new Item("Butterfly", LoadItemIcon("Butterfly"))
                 {AttackDamageBonus = 30, AgilityBonus = 35};
             butterfly.AdditionalPassiveProperties.Add("Attack speed +30");
             butterfly.AdditionalPassiveProperties.Add("Evasion +35%");
@@ -31,26 +31,26 @@ namespace Dota2CharacterCalculator
 
             _items.Add(butterfly);
 
-            var satanic = new Item("Satanic", LoadIcon("Satanic", IconType.Items))
+            var satanic = new Item("Satanic", LoadItemIcon("Satanic"))
                 {AttackDamageBonus = 20, StrengthBonus = 25, ArmorBonus = 5};
             satanic.AdditionalPassiveProperties.Add("Lifesteal 25%");
             satanic.AdditionalActiveProperties.Add("Unholy Rage");
 
             _items.Add(satanic);
 
-            _items.Add(new Item("Boots of Speed", LoadIcon("BootsOfSpeed", IconType.Items))
+            _items.Add(new Item("Boots of Speed", LoadItemIcon("BootsOfSpeed"))
                 {MovementSpeedBonus = 45.0});
 
-            _items.Add(new Item("Blades of Attack", LoadIcon("BladesOfAttack", IconType.Items))
+            _items.Add(new Item("Blades of Attack", LoadItemIcon("BladesOfAttack"))
                 {AttackDamageBonus = 9});
 
-            _items.Add(new Item("Staff of Wizardry", LoadIcon("StaffOfWizardry", IconType.Items))
+            _items.Add(new Item("Staff of Wizardry", LoadItemIcon("StaffOfWizardry"))
                 {IntelligenceBonus = 10});
 
-            _items.Add(new Item("Platemail", LoadIcon("Platemail", IconType.Items))
+            _items.Add(new Item("Platemail", LoadItemIcon("Platemail"))
                 {ArmorBonus = 10});
 
-            var phaseBoots = new Item("Phase Boots", LoadIcon("PhaseBoots", IconType.Items))
+            var phaseBoots = new Item("Phase Boots", LoadItemIcon("PhaseBoots"))
             {MovementSpeedBonus = 45, AttackDamageBonus = 24};
             phaseBoots.AdditionalActiveProperties.Add("Phase");
             _items.Add(phaseBoots);
@@ -73,16 +73,9 @@ namespace Dota2CharacterCalculator
 //            downloadService.DownloadHeroes();
         }
 
-        private enum IconType
+        private static BitmapImage LoadItemIcon(string iconName)
         {
-            Heroes,
-            Stats,
-            Items,
-        }
-
-        private static BitmapImage LoadIcon(string iconName, IconType iconType)
-        {
-            return new BitmapImage(new Uri($"Assets/{iconType}/{iconName}.png", UriKind.Relative));
+            return new BitmapImage(new Uri($"Assets/Items/{iconName}.png", UriKind.Relative));
         }
 
         private void IncreaseHeroLevelCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
