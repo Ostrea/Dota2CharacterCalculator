@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea">
+      <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -76,7 +79,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201612041210437_InitialCreate.cs" />
+    <Compile Include="Migrations\201612041210437_InitialCreate.Designer.cs">
+      <DependentUpon>201612041210437_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612070805153_AddIcon.cs" />
+    <Compile Include="Migrations\201612070805153_AddIcon.Designer.cs">
+      <DependentUpon>201612070805153_AddIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612071037558_AddStats.cs" />
+    <Compile Include="Migrations\201612071037558_AddStats.Designer.cs">
+      <DependentUpon>201612071037558_AddStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Hero.cs" />
+    <Compile Include="Models\HeroRepository.cs" />
+    <Compile Include="Services\DownloadService.cs" />
     <Compile Include="ViewModels\Hero.cs" />
     <Compile Include="ViewModels\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -92,6 +110,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201612041210437_InitialCreate.resx">
+      <DependentUpon>201612041210437_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612070805153_AddIcon.resx">
+      <DependentUpon>201612070805153_AddIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071037558_AddStats.resx">
+      <DependentUpon>201612071037558_AddStats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
