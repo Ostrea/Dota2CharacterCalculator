@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Dota2CharacterCalculator.Models;
 using Dota2CharacterCalculator.ViewModels;
-using Attribute = Dota2CharacterCalculator.ViewModels.Attribute;
 using Hero = Dota2CharacterCalculator.ViewModels.Hero;
 
 namespace Dota2CharacterCalculator
@@ -27,7 +17,6 @@ namespace Dota2CharacterCalculator
     public partial class MainWindow : Window
     {
         private readonly ObservableCollection<Item> _items = new ObservableCollection<Item>();
-        private readonly ObservableCollection<Hero> _heroes = new ObservableCollection<Hero>();
 
         public MainWindow()
         {
@@ -74,84 +63,14 @@ namespace Dota2CharacterCalculator
                 inventoryItem.ItemsSource = _items;
             }
 
-            var attackDamageIcon = LoadIcon("AttackDamage", IconType.Stats);
-            var armorIcon = LoadIcon("Armor", IconType.Stats);
-            var msIcon = LoadIcon("MovementSpeed", IconType.Stats);
-            var healthIcon = LoadIcon("Health", IconType.Stats);
-            var manaIcon = LoadIcon("Mana", IconType.Stats);
-
-            var strengthIcon = LoadIcon("Strength", IconType.Stats);
-            var agilityIcon = LoadIcon("Agility", IconType.Stats);
-            var intelligenceIcon = LoadIcon("Intelligence", IconType.Stats);
-
-            var morph = new Hero
-                (
-                    "Morphling",
-                    LoadIcon("Morphling", IconType.Heroes),
-                    new AttackDamage(9, 18, attackDamageIcon),
-                    new Armor(-2.0, armorIcon),
-                    new MovementSpeed(285.0, msIcon),
-                    new Tuple<Attribute, Attribute, Attribute>
-                    (
-                        new Attribute(AttributeType.Strength, 19.0, 2.0, strengthIcon),
-                        new Attribute(AttributeType.Agility, 24.0, 3.7, agilityIcon),
-                        new Attribute(AttributeType.Intelligence, 17.0, 1.1, intelligenceIcon)
-                    ),
-                    1,
-                    AttributeType.Agility,
-                    new Health(healthIcon),
-                    new Mana(manaIcon)
-                );
-
-            var invoker = new Hero
-                (
-                    "Invoker",
-                    LoadIcon("Invoker", IconType.Heroes),
-                    new AttackDamage(19, 25, attackDamageIcon),
-                    new Armor(-1.0, armorIcon),
-                    new MovementSpeed(280.0, msIcon),
-                    new Tuple<Attribute, Attribute, Attribute>
-                    (
-                        new Attribute(AttributeType.Strength, 17.0, 1.7, strengthIcon),
-                        new Attribute(AttributeType.Agility, 14.0, 1.9, agilityIcon),
-                        new Attribute(AttributeType.Intelligence, 16.0, 4.0, intelligenceIcon)
-                    ),
-                    1,
-                    AttributeType.Intelligence,
-                    new Health(healthIcon),
-                    new Mana(manaIcon)
-                );
-
-            var omniknight = new Hero
-            (
-                "Omniknight",
-                LoadIcon("Omniknight", IconType.Heroes),
-                new AttackDamage(31, 41, attackDamageIcon),
-                new Armor(3.0, armorIcon),
-                new MovementSpeed(305.0, msIcon),
-                new Tuple<Attribute, Attribute, Attribute>
-                (
-                    new Attribute(AttributeType.Strength, 22.0, 2.8, strengthIcon),
-                    new Attribute(AttributeType.Agility, 15.0, 1.75, agilityIcon),
-                    new Attribute(AttributeType.Intelligence, 17.0, 1.8, intelligenceIcon)
-                ),
-                1,
-                AttributeType.Strength,
-                new Health(healthIcon),
-                new Mana(manaIcon)
-            );
-
-            _heroes.Add(morph);
-            _heroes.Add(invoker);
-            _heroes.Add(omniknight);
-
-            Heroes.ItemsSource = _heroes;
+            var heroRepository = new HeroRepository();
+            Heroes.ItemsSource = heroRepository.GetHeroes();
         }
 
         private void Window_OnLoad(object sender, RoutedEventArgs e)
         {
-
-
+//            var downloadService = new DownloadService();
+//            downloadService.DownloadHeroes();
         }
 
         private enum IconType
